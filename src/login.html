@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        .container{
+            position: absolute; /* absolute para a página, relative para outra div*/
+            left: 50%;
+            top: 30%;
+            transform: translateX(-50%);
+        }
+
+        h1{
+            text-align: center;
+        }
+
+        #submit{
+            position: relative;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>LOGIN</h1>
+        <form>
+            <label for="uemail">Digite se email: </label>
+            <br>
+            <input type="email" id="uemail" placeholder="abc@defg.com">
+            <br><br>
+            <label for="upwd">Digite sua senha: </label>
+            <br>
+            <input type="password" id="upwd" placeholder="*****">
+            <br><br>
+            <input type="Submit" id="submit">
+        </form>
+    </div>
+</body>
+</html>
