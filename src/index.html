@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projeto de API</title>
+    <style>
+        .tall_button{
+            align-content: center;
+            border: 1px black solid;
+            text-align: center;
+            height: 100%;
+        }
+
+        .container{
+            display: grid;
+            grid-template-columns: auto auto auto;
+            height: 850px;
+            width: auto;
+            border: 1px black solid;
+        }
+
+        .container2{
+            display: grid;
+            grid-template-columns: auto auto auto;
+            width: auto;
+            border-left: 2px black solid;
+            border-right: 2px black solid;
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+
+        .navbutton{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header style="border:2px black solid; font-size: 58px;" align="center">
+        MENU
+    </header>
+    <nav>
+        <div class="container2">
+            <div class="navbutton">CONTA</div>
+            <div class="navbutton">AJUDA</div>
+            <div class="navbutton">INFO</div>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="tall_button">
+            <h1>PEDIDOS</h1>
+        </div>
+        <div class="tall_button">
+            <h1>PRODUTOS</h1>
+        </div>
+        <div class="tall_button">
+            <h1>USUÁRIOS</h1>
+        </div>
+    </div>
+</body>
+</html>
