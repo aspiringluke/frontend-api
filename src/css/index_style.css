@@ -6,8 +6,8 @@
 
 .container{
     display: grid;
-    grid-template-columns: auto auto auto;
-    height: 850px;
+    grid-template-columns: auto auto;
+    height: 500px;
     width: auto;
     border: 1px black solid;
 }
