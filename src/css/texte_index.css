@@ -83,19 +83,17 @@
 }
 
 .tall_button {
-    width: 240px;
-    height: 400px; /* altura dos botões */
+    width: 300px;
+    height: 500px; /* altura dos botões */
     display: flex;
     justify-content: center;
     align-items: center;
     border: 2px solid black;
     border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    background-color: rgb(214, 212, 212);
 }
 
 .tall_button button {
-    width: 100%;
+    width: 200%;
     height: 100%;
     font-size: 24px;
     border: none;
@@ -124,6 +122,22 @@
     margin-top: 20px;
     text-align: center;
     background-color: darkred;
-    color:white;
+    color:rgb(255, 255, 255);
 }
 
+
+body {
+    background-image: url('https://i.pinimg.com/236x/6e/ee/d4/6eeed4da8a937b4c434a542e2c9994f5.jpg');
+    background-repeat: repeat;
+    background-size: auto; /* ou 100px 100px para ajustar o tamanho do padrão */
+    background-position: top left;
+    background-size: 150px 150px;
+}
+
+
+.img-centralizada {
+    display: block;
+    margin: 0 auto 40px auto;
+    max-width: 40%;
+    height: auto;
+}
