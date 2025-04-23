@@ -20,18 +20,25 @@
 
 .banner {
     text-align: center;
-    padding: 20px;
-    font-size: 30px;
+    padding: 30px;
 
     border: 2px solid black;
     background-color: rgba(250, 50, 10, 1);    
+}
+
+#bannerTitle{
+    text-align: right;
+    line-height: 50px;
+    font-size: 50px;
+    /* A fonte do banner deve ser de título */
+    font-family:Verdana, sans-serif;
 }
 
 .logo-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 80px; /* ocupa a altura toda da tela */
+    height: 130px; /* ocupa a altura toda da tela */
 }
 
 .logo-container img {
