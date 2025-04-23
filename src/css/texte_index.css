@@ -21,10 +21,22 @@
 .banner {
     text-align: center;
     padding: 20px;
-    font-size: 60px;
+    font-size: 30px;
 
     border: 2px solid black;
     background-color: rgba(250, 50, 10, 1);    
+}
+
+.logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80px; /* ocupa a altura toda da tela */
+}
+
+.logo-container img {
+    max-width: 80%;
+    height: 100%;
 }
 
 /*
@@ -59,38 +71,6 @@
  * |===== CONTEUDO =====|
  * |====================|
 */
-
-/* a fazer */
-
-/*
- * |==================|
- * |===== RODAPE =====|
- * |==================|
-*/
-
-.rodape {
-    padding: 20px;
-    margin-top: 20px;
-    text-align: center;
-    background-color: darkred;
-    color:white;
-}
-
-
-    
-.tall_button {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 40px;
-    margin: 0;
-    border-radius: 10px;
-    border-color: rgb(0, 0, 0);
-
-}
-
-
-
 
 .container {
     display: flex;
@@ -132,14 +112,18 @@
     background-color: rgb(241, 113, 113);
 }
 
-.logo-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh; /* ocupa a altura toda da tela */
+
+/*
+ * |==================|
+ * |===== RODAPE =====|
+ * |==================|
+*/
+
+.rodape {
+    padding: 20px;
+    margin-top: 20px;
+    text-align: center;
+    background-color: darkred;
+    color:white;
 }
 
-.logo-container img {
-    max-width: 80%;
-    height: auto;
-}
