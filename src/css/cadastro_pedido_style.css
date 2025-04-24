@@ -1,0 +1,22 @@
+.areaDeCadastro{
+    background-color: green;
+    height: 100%;
+    width: 100%;
+
+    padding: 20px;
+
+    display: grid;
+    grid-template-columns: auto auto;
+}
+
+.containerForm{
+    height: 100%;
+    
+    text-align: center;
+}
+
+.containerTabela{
+    height: 100%;
+
+    text-align: center;
+}

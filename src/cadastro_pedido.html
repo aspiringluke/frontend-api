@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projeto de API</title>
+    <link rel="stylesheet" href="css/index_style.css">
+    <link rel="stylesheet" href="css/cadastro_pedido_style.css">
+</head>
+<body>
+    <header class="banner">
+        MENU
+    </header>
+    <nav class="menu">
+        <ul>
+            <li><a href="index_ven.html">HOME</a></li>
+            <li><a href="./conta.html">CONTA</a></li>
+            <li><a href="./ajuda.html">AJUDA</a></li>
+            <li><a href="#">CONTATO</a></li>
+        </ul>
+    </nav>
+    <main class="conteudo">
+        <div class="areaDeCadastro">
+            <div class="containerForm">
+                <form action="console.log('call api');">
+                    <!--
+                        PEDIDO
+                            data, foiPago
+                        CLIENTE
+                            local, nome, cnpj, telefone
+                        ITENS
+                            nome, unidade, quantidade
+                    -->
+                    <label for="data">
+                        Data
+                        <input type="datetime-local" id="data" name="pedido">
+                    </label>
+                    <br>
+                    <label for="foiPago">
+                        Foi pago?
+                        <input type="checkbox" id="foiPago" name="pedido">
+                    </label>
+                    <br>
+                    <label for="nomeCliente">
+                        Nome
+                        <input type="text" id="nomeCliente" name="cliente">
+                    </label>
+                    <br>
+                    <label for="cep">
+                        CEP
+                        <input type="text" id="cep" name="cliente">
+                    </label>
+                    <br>
+                    <label for="cnpj">
+                        CNPJ
+                        <input type="text" id="cnpj" name="cliente">
+                    </label>
+                    <br>
+                    <label for="telefone">
+                        telefone
+                        <input type="text" id="telefone" name="cliente">
+                    </label>
+                    <br>
+                    <label for="nomeProduto">
+                        Nome produto
+                        <input type="text" id="nomeProduto" name="item">
+                    </label>
+                    <br>
+                    <label for="quantidade">
+                        Quantidade
+                        <input type="number" id="quantidade" name="item">
+                    </label>
+                    <br>
+                    <label for="valorCombinado">
+                        Valor combinado
+                        <input type="number" id="valorCombinado" name="item">
+                    </label>
+                </form>
+            </div>
+            <div class="containerTabela">
+                Tabela de pedidos
+            </div>
+        </div>
+    </main>
+    <footer class="rodape">
+        Projeto Integrado 2025.1
+        Grupo 5, UNIFEOB
+    </footer>
+</body>
+</html>
