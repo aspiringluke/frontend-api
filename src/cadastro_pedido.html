@@ -22,7 +22,8 @@
     <main class="conteudo">
         <div class="areaDeCadastro">
             <div class="containerForm">
-                <form action="console.log('call api');">
+
+                <form action="console.log('call api');" id="cadastroPedido">
                     <!--
                         PEDIDO
                             data, foiPago
@@ -31,50 +32,56 @@
                         ITENS
                             nome, unidade, quantidade
                     -->
-                    <label for="data">
-                        Data
-                        <input type="datetime-local" id="data" name="pedido">
-                    </label>
-                    <br>
-                    <label for="foiPago">
-                        Foi pago?
-                        <input type="checkbox" id="foiPago" name="pedido">
-                    </label>
-                    <br>
-                    <label for="nomeCliente">
-                        Nome
-                        <input type="text" id="nomeCliente" name="cliente">
-                    </label>
-                    <br>
-                    <label for="cep">
-                        CEP
-                        <input type="text" id="cep" name="cliente">
-                    </label>
-                    <br>
-                    <label for="cnpj">
-                        CNPJ
-                        <input type="text" id="cnpj" name="cliente">
-                    </label>
-                    <br>
-                    <label for="telefone">
-                        telefone
-                        <input type="text" id="telefone" name="cliente">
-                    </label>
-                    <br>
-                    <label for="nomeProduto">
-                        Nome produto
-                        <input type="text" id="nomeProduto" name="item">
-                    </label>
-                    <br>
-                    <label for="quantidade">
-                        Quantidade
-                        <input type="number" id="quantidade" name="item">
-                    </label>
-                    <br>
-                    <label for="valorCombinado">
-                        Valor combinado
-                        <input type="number" id="valorCombinado" name="item">
-                    </label>
+                    <div>
+                        <label for="data">
+                            Data <br>
+                            <input type="datetime-local" id="data" name="pedido">
+                        </label>
+                        <br>
+                        <label for="foiPago">
+                            Foi pago?
+                            <input type="checkbox" id="foiPago" name="pedido">
+                        </label>
+                        <br>
+                        <label for="nomeCliente">
+                            Nome <br>
+                            <input type="text" id="nomeCliente" name="cliente">
+                        </label>
+                        <br>
+                        <label for="cep">
+                            CEP <br>
+                            <input type="text" id="cep" name="cliente">
+                        </label>
+                        <br>
+                        <label for="cnpj">
+                            CNPJ <br>
+                            <input type="text" id="cnpj" name="cliente">
+                        </label>
+                    </div>
+                    <div>
+                        <label for="telefone">
+                            Telefone <br>
+                            <input type="text" id="telefone" name="cliente">
+                        </label>
+                        <br>
+                        <label for="nomeProduto">
+                            Nome produto <br>
+                            <input type="text" id="nomeProduto" name="item">
+                        </label>
+                        <br>
+                        <label for="quantidade">
+                            Quantidade <br>
+                            <input type="number" id="quantidade" name="item">
+                        </label>
+                        <br>
+                        <label for="valorCombinado">
+                            Valor combinado <br>
+                            <input type="number" id="valorCombinado" name="item">
+                        </label>
+                    </div>
+                    <div class="botaoContainer">
+                        <button type="submit" class="btnSubmit">Cadastrar Pedido</button>
+                    </div>
                 </form>
             </div>
             <div class="containerTabela">

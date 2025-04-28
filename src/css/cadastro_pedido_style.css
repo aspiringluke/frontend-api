@@ -1,22 +1,96 @@
-.areaDeCadastro{
-    background-color: green;
-    height: 100%;
-    width: 100%;
+/* Estilo da área geral do formulário */
+.areaDeCadastro {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    padding: 40px;
+    background-color: #f7f9fc;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
 
-    padding: 20px;
+/* Estilo do container do formulário */
+.containerForm {
+    background-color: #fff;
+    padding: 30px 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    flex: 1;
+    min-width: 320px;
+    max-width: 600px;
+}
 
+/* Estilo do formulário */
+#cadastroPedido {
     display: grid;
-    grid-template-columns: auto auto;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    font-size: 16px;
+    color: #333;
 }
 
-.containerForm{
-    height: 100%;
-    
+/* Estilo das labels e inputs */
+label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #222;
+}
+
+input[type="text"],
+input[type="datetime-local"],
+input[type="number"] {
+    width: 100%;
+    padding: 10px 12px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+}
+
+input:focus {
+    outline: none;
+    border-color: #007BFF;
+}
+
+input[type="checkbox"] {
+    margin-left: 8px;
+    transform: scale(1.2);
+}
+
+.btnSubmit {
+    background-color: #007BFF;
+    color: white;
+    padding: 12px 24px;
+    font-size: 16px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    grid-column: 1 / -1;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.btnSubmit:hover {
+    background-color: #0056b3;
+}
+
+
+/* Estilo da tabela de pedidos (lado direito) */
+.containerTabela {
+    flex: 1;
+    min-width: 300px;
+    background-color: #fff;
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     text-align: center;
 }
 
-.containerTabela{
-    height: 100%;
-
-    text-align: center;
+/* Responsividade */
+@media (max-width: 768px) {
+    #cadastroPedido {
+        grid-template-columns: 1fr;
+    }
 }
