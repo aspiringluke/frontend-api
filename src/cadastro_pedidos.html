@@ -1,0 +1,77 @@
+<!DOCTYPE html> 
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastrar Pedido</title>
+    <link rel="stylesheet" href="css/cadastro_pedidos.css">
+</head>
+<body>
+    <header class="banner">
+        <div class="logo-container">
+            <img src="https://www.argenzio.com.br/img/Logo_Argenzio.png" alt="Logo Argenzio">
+        </div>
+
+        <script>
+            function calcularTotal() {
+                let selectProdutos = document.getElementById('produtos');
+                let total = 0;
+            
+                for (let option of selectProdutos.options) {
+                    if (option.selected) {
+                        total += parseFloat(option.getAttribute('data-preco'));
+                    }
+                }
+            
+                
+                document.getElementById('valorTotal').value = total.toFixed(2).replace('.', ',');
+            }
+            </script>
+            
+
+
+    </header>
+
+    <nav class="menu">
+        <ul>
+            <li><a href="./conta.html">CONTA</a></li>
+            <li><a href="./ajuda.html">AJUDA</a></li>
+            <li><a href="#">CONTATO</a></li>
+        </ul>
+    </nav>
+
+    <main class="cadastro-pedidos">
+        <h1>Cadastrar Pedido</h1>
+        <form action="processar_pedido.php" method="POST" class="formulario-pedido">
+            <label for="nomeCliente">Nome do Cliente:</label>
+            <input type="text" id="nomeCliente" name="nomeCliente" required>
+    
+            <label for="produtos">Produtos:</label>
+            <select id="produtos" name="produtos[]" multiple size="5" required onchange="calcularTotal()">
+                <option value="Produto A" data-preco="100">Produto A - R$100,00</option>
+                <option value="Produto B" data-preco="150">Produto B - R$150,00</option>
+                <option value="Produto C" data-preco="200">Produto C - R$200,00</option>
+                <option value="Produto D" data-preco="250">Produto D - R$250,00</option>
+                <option value="Produto E" data-preco="300">Produto E - R$300,00</option>
+            </select>
+    
+            <label for="valorTotal">Valor Total do Pedido (R$):</label>
+            <input type="text" id="valorTotal" name="valorTotal" readonly>
+    
+            <label for="endereco">Endereço de Entrega:</label>
+            <textarea id="endereco" name="endereco" rows="3" required></textarea>
+    
+            <button type="submit">Cadastrar Pedido</button>
+        </form>
+    </main>
+    
+    
+
+    <br>
+
+    <footer class="rodape">
+        Projeto Integrado 2025.1<br>
+        Grupo 5, UNIFEOB
+    </footer>
+</body>
+</html>

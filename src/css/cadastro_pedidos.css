@@ -1,0 +1,210 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+
+.tall_button{
+    align-content: center;
+    border: 1px black solid;
+    text-align: center;
+    height: 100%;
+}
+
+/*
+ * |==================|
+ * |===== BANNER =====|
+ * |==================|
+*/
+
+.banner {
+    text-align: center;
+
+
+    border: 2px solid black;
+    background-color: rgba(250, 50, 10, 1);    
+}
+
+#bannerTitle{
+    text-align: right;
+    line-height: 50px;
+    font-size: 50px;
+    /* A fonte do banner deve ser de título */
+    font-family:Verdana, sans-serif;
+}
+
+.logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 130px; /* ocupa a altura toda da tela */
+}
+
+.logo-container img {
+    max-width: 80%;
+    height: 100%;
+}
+
+/*
+ * |================|
+ * |===== MENU =====|
+ * |================|
+*/
+
+.menu {
+    background-color: rgba(250,50,10,0.4);
+    padding: 20px;
+    font-family:Verdana, Geneva, Tahoma, sans-serif ;
+}
+
+.menu ul {
+   list-style:none;
+   text-align: center; 
+}
+
+.menu ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+.menu ul li a {
+    color: black;
+    text-decoration: none;
+}
+
+/*
+ * |====================|
+ * |===== CONTEUDO =====|
+ * |====================|
+*/
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70vh; /* altura total do container */
+    max-width: 90%;
+    margin: 40px auto;
+    padding: 0 40px;
+}
+
+.tall_button {
+    width: 300px;
+    height: 500px; /* altura dos botões */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid black;
+    border-radius: 12px;
+}
+
+.tall_button button {
+    width: 200%;
+    height: 100%;
+    font-size: 24px;
+    border: none;
+    border-radius: 12px;
+    background-color: #FF033E;
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+    padding: 20px;
+    transition: background-color 0.3s ease;
+    line-height: 1.4;
+}
+
+.tall_button button:hover {
+    background-color: rgb(241, 113, 113);
+}
+
+
+/*
+ * |==================|
+ * |===== RODAPE =====|
+ * |==================|
+*/
+
+.rodape {
+    padding: 20px;
+    margin-top: 20px;
+    text-align: center;
+    background-color: darkred;
+    color:rgb(255, 255, 255);
+}
+
+
+body {
+    background-image: url('https://i.pinimg.com/236x/6e/ee/d4/6eeed4da8a937b4c434a542e2c9994f5.jpg');
+    background-repeat: repeat;
+    background-size: auto; /* ou 100px 100px para ajustar o tamanho do padrão */
+    background-position: top left;
+    background-size: 150px 150px;
+}
+
+.cadastro-pedidos {
+    max-width: 600px;
+    margin: 40px auto;
+    background-color: rgba(214, 214, 214, 0.9);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    font-family: Verdana, sans-serif;
+}
+
+.cadastro-pedidos h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: rgb(180, 7, 7);
+}
+
+.formulario-pedido label {
+    display: block;
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+.formulario-pedido input,
+
+.formulario-pedido textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+.formulario-pedido button {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    margin-top: 20px;
+    background-color: #FF033E;
+    color: white;
+    font-size: 18px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.formulario-pedido button:hover {
+    background-color: rgb(241, 113, 113);
+}
+
+
+.formulario-pedido select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    background-color: #fff;
+}
+
+.formulario-pedido input[readonly] {
+    background-color: #f9f9f9;
+    color: #333;
+    cursor: not-allowed;
+}
