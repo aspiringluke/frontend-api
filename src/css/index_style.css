@@ -4,6 +4,12 @@
     box-sizing: border-box;
 }
 
+html, body{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
 .container{
     display: grid;
     grid-template-columns: auto auto;
@@ -67,7 +73,46 @@
  * |====================|
 */
 
-/* a fazer */
+.conteudo{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.containerMenu {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 20px;
+}
+
+.menuButton {
+    background-color: #fff;
+    border: 2px solid #D32F2F;
+    border-radius: 12px;
+    padding: 50px 30px;
+    text-align: center;
+    width: 360px;
+    height: 220px;
+    text-decoration: none;
+    color: #D32F2F;
+    font-size: 24px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.menuButton:hover {
+    background-color: #D32F2F;
+    color: #fff;
+    transform: scale(1.03);
+}
+
 
 /*
  * |==================|
@@ -81,4 +126,15 @@
     text-align: center;
     background-color: darkred;
     color:white;
+}
+
+@media (max-width: 600px) {
+    .menuButton {
+        width: 100%;
+    }
+
+    .menu ul {
+        flex-direction: column;
+        align-items: center;
+    }
 }
