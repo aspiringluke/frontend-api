@@ -1,0 +1,79 @@
+.areaDeCadastro {
+    display: flex;
+    justify-content: center;
+    padding: 40px;
+    background-color: #f7f9fc;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    min-height: 70vh;
+}
+
+.containerForm {
+    background-color: #fff;
+    padding: 30px 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 500px;
+}
+
+.formTitle {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #333;
+    font-size: 24px;
+}
+
+label {
+    display: block;
+    margin-top: 15px;
+    font-weight: 600;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    box-sizing: border-box;
+}
+
+.radioGroup {
+    margin-top: 20px;
+    border: none;
+    padding: 0;
+}
+
+.radioGroup legend {
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.radioGroup label {
+    display: block;
+    margin-top: 5px;
+    font-weight: normal;
+}
+
+.botaoContainer {
+    text-align: center;
+    margin-top: 25px;
+}
+
+.btnSubmit {
+    background-color: #007BFF;
+    color: white;
+    padding: 12px 24px;
+    font-size: 16px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btnSubmit:hover {
+    background-color: #0056b3;
+}
