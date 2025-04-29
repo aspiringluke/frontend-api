@@ -4,26 +4,20 @@
     box-sizing: border-box;
 }
 
+body{
+    background-image: url('https://i.pinimg.com/236x/6e/ee/d4/6eeed4da8a937b4c434a542e2c9994f5.jpg');
+    background-repeat: repeat;
+    background-size: auto; /* ou 100px 100px para ajustar o tamanho do padrão */
+    background-position: top left;
+    background-size: 150px 150px;
+}
 html, body{
     height: 100%;
     display: flex;
     flex-direction: column;
 }
 
-.container{
-    display: grid;
-    grid-template-columns: auto auto;
-    height: 500px;
-    width: auto;
-    border: 1px black solid;
-}
 
-.tall_button{
-    align-content: center;
-    border: 1px black solid;
-    text-align: center;
-    height: 100%;
-}
 
 /*
  * |==================|
@@ -67,6 +61,19 @@ html, body{
     text-decoration: none;
 }
 
+.logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 130px; /* ocupa a altura toda da tela */
+}
+
+.logo-container img {
+    max-width: 80%;
+    height: 100%;
+}
+
+
 /*
  * |====================|
  * |===== CONTEUDO =====|
@@ -85,32 +92,44 @@ html, body{
     gap: 40px;
     justify-content: center;
     align-items: center;
-    padding: 60px 20px;
+    padding: 40px 20px;
 }
 
 .menuButton {
-    background-color: #fff;
-    border: 2px solid #D32F2F;
-    border-radius: 12px;
-    padding: 50px 30px;
-    text-align: center;
-    width: 360px;
-    height: 220px;
-    text-decoration: none;
-    color: #D32F2F;
-    font-size: 24px;
-    font-weight: bold;
-    transition: all 0.3s ease;
-    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.1);
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 720px;
+    height: 440px;
+    padding: 30px 30px;
+    border: 2px solid #D32F2F;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.1);
+    background-color: #fffb;
+    color: #D32F2F;
+    text-decoration: none;
+    text-align: center;
+    font-size: 28px;
+    font-weight:100;
+    font-family: 'Open Sans', 'Helvetica Neue';
 }
 
 .menuButton:hover {
     background-color: #D32F2F;
     color: #fff;
     transform: scale(1.03);
+}
+
+#titulo{
+    text-align: center;
+    margin-top: 70px;
+}
+.img-centralizada {
+    display: block;
+    margin: 0 auto 40px auto;
+    max-width: 15%;
+    height: auto;
 }
 
 
@@ -137,19 +156,4 @@ html, body{
         flex-direction: column;
         align-items: center;
     }
-}
-
-body {
-    background-image: url('https://i.pinimg.com/236x/6e/ee/d4/6eeed4da8a937b4c434a542e2c9994f5.jpg');
-    background-repeat: repeat;
-    background-size: auto; /* ou 100px 100px para ajustar o tamanho do padrão */
-    background-position: top left;
-    background-size: 150px 150px;
-}
-
-.img-centralizada {
-    display: block;
-    margin: 0 auto 40px auto;
-    max-width: 15%;
-    height: auto;
 }
