@@ -1,96 +1,215 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projeto de API</title>
-    <link rel="stylesheet" href="css/index_style.css">
-    <link rel="stylesheet" href="css/cadastro_pedido_style.css">
+    <title>Cadastrar Pedido</title>
+    <link rel="stylesheet" href="css/cadastro_pedidos.css">
+    <style>
+        /* Adicione ou modifique os estilos existentes no seu arquivo CSS */
+
+    </style>
+    <script>
+        let carrinho = [];
+
+        function adicionarAoCarrinho(nome, preco) {
+            const itemNoCarrinho = carrinho.find(item => item.nome === nome);
+
+            if (itemNoCarrinho) {
+                itemNoCarrinho.quantidade++;
+            } else {
+                carrinho.push({ nome: nome, preco: preco, quantidade: 1 });
+            }
+
+            atualizarCarrinho();
+        }
+
+        function atualizarCarrinho() {
+            const listaCarrinho = document.getElementById('listaCarrinho');
+            const totalCarrinho = document.getElementById('totalCarrinho');
+            let total = 0;
+        
+            listaCarrinho.innerHTML = ''; // Limpa a lista do carrinho
+            
+            /**
+             * TODO: Deixar o loop mais eficiente.
+             * Rodar o loop para cada produto adicionado não é interessante,
+             * porque pode afetar o desempenho com uma quantidade maior de produtos.
+             */
+            carrinho.forEach((item, index) => { // Adicionamos o 'index' para identificar o item
+                const listItem = document.createElement('li');
+                listItem.textContent = `${item.nome} x${item.quantidade} - R$${(item.preco * item.quantidade).toFixed(2)}`;
+        
+                const botaoRemover = document.createElement('button');
+                botaoRemover.textContent = 'Remover';
+                botaoRemover.onclick = () => removerDoCarrinho(index); // Chama a função ao clicar
+                listItem.appendChild(botaoRemover);
+        
+                listaCarrinho.appendChild(listItem);
+                total += item.preco * item.quantidade;
+            });
+        
+            totalCarrinho.textContent = total.toFixed(2);
+        }
+
+
+        function removerDoCarrinho(index) {
+            carrinho.splice(index, 1); // Remove 1 item do array 'carrinho' no índice especificado
+            atualizarCarrinho(); // Atualiza a exibição do carrinho
+        }
+
+        function calcularTotal() {
+            let selectProdutos = document.getElementById('produtos');
+            let total = 0;
+
+            for (let option of selectProdutos.options) {
+                if (option.selected) {
+                    total += parseFloat(option.getAttribute('data-preco'));
+                }
+            }
+            document.getElementById('valorTotal').value = total.toFixed(2).replace('.', ',');
+        }
+
+        function pesquisarProdutos() {
+            const input = document.getElementById("pesquisarProduto");
+            const filtro = input.value.toUpperCase();
+            const tabela = document.querySelector(".tabela-rolavel table");
+            const linhas = tabela.getElementsByTagName("tr");
+
+            for (let i = 1; i < linhas.length; i++) { // Começa do 1 para ignorar o cabeçalho
+                const colunaNome = linhas[i].getElementsByTagName("td")[0]; // Pega a coluna do nome
+                if (colunaNome) {
+                    const textoNome = colunaNome.textContent || colunaNome.innerText;
+                    if (textoNome.toUpperCase().indexOf(filtro) > -1) {
+                        linhas[i].style.display = "";
+                    } else {
+                        linhas[i].style.display = "none";
+                    }
+                }
+            }
+        }
+    </script>
 </head>
 <body>
     <header class="banner">
-        MENU
+        <div class="logo-container">
+            <img src="https://www.argenzio.com.br/img/Logo_Argenzio.png" alt="Logo Argenzio">
+        </div>
     </header>
+
     <nav class="menu">
         <ul>
-            <li><a href="index_ven.html">HOME</a></li>
+            <li><a href="./index_ven.html">HOME</a></li>
             <li><a href="./conta.html">CONTA</a></li>
             <li><a href="./ajuda.html">AJUDA</a></li>
             <li><a href="#">CONTATO</a></li>
         </ul>
     </nav>
-    <main class="conteudo">
-        <div class="areaDeCadastro">
-            <div class="containerForm">
 
-                <form action="console.log('call api');" id="cadastroPedido">
-                    <!--
-                        PEDIDO
-                            data, foiPago
-                        CLIENTE
-                            local, nome, cnpj, telefone
-                        ITENS
-                            nome, unidade, quantidade
-                    -->
-                    <div>
-                        <label for="data">
-                            Data <br>
-                            <input type="datetime-local" id="data" name="pedido">
-                        </label>
-                        <br>
-                        <label for="foiPago">
-                            Foi pago?
-                            <input type="checkbox" id="foiPago" name="pedido">
-                        </label>
-                        <br>
-                        <label for="nomeCliente">
-                            Nome <br>
-                            <input type="text" id="nomeCliente" name="cliente">
-                        </label>
-                        <br>
-                        <label for="cep">
-                            CEP <br>
-                            <input type="text" id="cep" name="cliente">
-                        </label>
-                        <br>
-                        <label for="cnpj">
-                            CNPJ <br>
-                            <input type="text" id="cnpj" name="cliente">
-                        </label>
-                    </div>
-                    <div>
-                        <label for="telefone">
-                            Telefone <br>
-                            <input type="text" id="telefone" name="cliente">
-                        </label>
-                        <br>
-                        <label for="nomeProduto">
-                            Nome produto <br>
-                            <input type="text" id="nomeProduto" name="item">
-                        </label>
-                        <br>
-                        <label for="quantidade">
-                            Quantidade <br>
-                            <input type="number" id="quantidade" name="item">
-                        </label>
-                        <br>
-                        <label for="valorCombinado">
-                            Valor combinado <br>
-                            <input type="number" id="valorCombinado" name="item">
-                        </label>
-                    </div>
-                    <div class="botaoContainer">
-                        <button type="submit" class="btnSubmit">Cadastrar Pedido</button>
-                    </div>
+    <main class="cadastro-pedidos">
+        <div class="layout">
+            <div class="areaDeCadastro">
+                <h1>Cadastrar Pedido</h1>
+                <form action="cadastrar_pedido.js" method="POST" class="formulario-pedido">
+                    <label for="nomeCliente">Nome do Cliente:</label>
+                    <input type="text" id="nomeCliente" name="nomeCliente" required>
+
+                    <label for="clienteCEP">CEP</label>
+                    <input type="number" id="clienteCEP" name="clienteCEP" required>
+
+                    <label for="clienteCNPJ">CNPJ</label>
+                    <input type="number" id="clienteCNPJ" name="clienteCEPJ" required>
+
+                    <label for="clienteContato">Forma de Contato</label>
+                    <input type="tel" id="clienteContato" name="clienteContato" placeholder="telefone" required>
+                    <input type="email" id="clienteContato" name="clienteContato" placeholder="email" required>
+
+                    <label for="dataPedido">Data</label>
+                    <input type="date" id="dataPedido" nome="dataPedido" required|>
+                    <button type="submit">Cadastrar pedido</button>
                 </form>
             </div>
+
             <div class="containerTabela">
-                Tabela de pedidos
+                <h2>Tabela de Produtos</h2>
+                <input type="text" id="pesquisarProduto" onkeyup="pesquisarProdutos()" placeholder="Pesquisar por nome...">
+                <div class="tabela-rolavel">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Nome</th>
+                                <th>Preço</th>
+                                <th>Adicionar Ao Carrinho</th>
+                            </tr>
+                        </thead>
+                        <tbody id="corpoTabelaProdutos">
+                            <tr>
+                                <td>Produto A</td>
+                                <td>R$100,00</td>
+                                <td><button onclick="adicionarAoCarrinho('Produto A', 100)">Adicionar</button></td>
+                            </tr>
+                            <tr>
+                                <td>Produto B</td>
+                                <td>R$150,00</td>
+                                <td><button onclick="adicionarAoCarrinho('Produto B', 150)">Adicionar</button></td>
+                            </tr>
+                            <tr>
+                                <td>Produto C</td>
+                                <td>R$200,00</td>
+                                <td><button onclick="adicionarAoCarrinho('Produto C', 200)">Adicionar</button></td>
+                            </tr>
+                            <tr>
+                                <td>Produto D</td>
+                                <td>R$250,00</td>
+                                <td><button onclick="adicionarAoCarrinho('Produto D', 250)">Adicionar</button></td>
+                            </tr>
+                            <tr>
+                                <td>Produto E</td>
+                                <td>R$300,00</td>
+                                <td><button onclick="adicionarAoCarrinho('Produto E', 300)">Adicionar</button></td>
+                            </tr>
+                            <tr>
+                                <td>Produto F</td>
+                                <td>R$350,00</td>
+                                <td><button onclick="adicionarAoCarrinho('Produto F', 350)">Adicionar</button></td>
+                            </tr>
+                            <tr>
+                                <td>Produto G</td>
+                                <td>R$400,00</td>
+                                <td><button onclick="adicionarAoCarrinho('Produto G', 400)">Adicionar</button></td>
+                            </tr>
+                            <tr>
+                                <td>Produto H</td>
+                                <td>R$450,00</td>
+                                <td><button onclick="adicionarAoCarrinho('Produto H', 450)">Adicionar</button></td>
+                            </tr>
+                            <tr>
+                                <td>Produto I</td>
+                                <td>R$500,00</td>
+                                <td><button onclick="adicionarAoCarrinho('Produto I', 500)">Adicionar</button></td>
+                            </tr>
+                            <tr>
+                                <td>Produto J</td>
+                                <td>R$550,00</td>
+                                <td><button onclick="adicionarAoCarrinho('Produto J', 550)">Adicionar</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="carrinho-produtos">
+                    <h2>Carrinho de Produtos</h2>
+                    <ul id="listaCarrinho">
+                        </ul>
+                    <p>Total: R$ <span id="totalCarrinho">0.00</span></p>
+                </div>
             </div>
         </div>
     </main>
+
+    <br>
+
     <footer class="rodape">
-        Projeto Integrado 2025.1
+        Projeto Integrado 2025.1<br>
         Grupo 5, UNIFEOB
     </footer>
 </body>
