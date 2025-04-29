@@ -138,3 +138,18 @@ html, body{
         align-items: center;
     }
 }
+
+body {
+    background-image: url('https://i.pinimg.com/236x/6e/ee/d4/6eeed4da8a937b4c434a542e2c9994f5.jpg');
+    background-repeat: repeat;
+    background-size: auto; /* ou 100px 100px para ajustar o tamanho do padrão */
+    background-position: top left;
+    background-size: 150px 150px;
+}
+
+.img-centralizada {
+    display: block;
+    margin: 0 auto 40px auto;
+    max-width: 15%;
+    height: auto;
+}
