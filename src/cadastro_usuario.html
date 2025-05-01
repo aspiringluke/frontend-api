@@ -38,8 +38,8 @@
 
                     <fieldset class="radioGroup">
                         <legend>Função</legend>
-                        <label><input type="radio" name="funcao" value="administrador" required> Administrador</label>
-                        <label><input type="radio" name="funcao" value="vendedor"> Vendedor</label>
+                        <label><input type="radio" name="funcao" value="1" required> Administrador</label>
+                        <label><input type="radio" name="funcao" value="2"> Vendedor</label>
                     </fieldset>
 
                     <div class="botaoContainer">
@@ -53,5 +53,44 @@
     <footer class="rodape">
         Projeto Integrado 2025.1 - Grupo 5, UNIFEOB
     </footer>
+
+    <script>
+        "use strict";
+        const URL = 'http://127.0.0.1:4040';
+
+        document.getElementById('cadastroUsuario').addEventListener('submit', (e)=>{
+            e.preventDefault();
+            
+            const fnome = document.getElementById('nome').value;
+            const femail = document.getElementById('email').value;
+            const fsenha = document.getElementById('senha').value;
+            let ffuncao;
+            let radios = document.getElementsByName('funcao');
+            for(const rad of radios){
+                if(rad.checked == true){
+                    ffuncao = rad.value;
+                    break
+                }
+            }
+            
+            fetch(URL+'/user',{
+                method: "post",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    nome: fnome,
+                    email: femail,
+                    senha: fsenha,
+                    funcao: parseInt(ffuncao)
+                })
+            })
+            .then(res => res.json())
+            .then(data => {
+                alert(JSON.stringify(data.message));
+            })
+            .catch(error => console.log(error));
+        });
+    </script>
 </body>
 </html>
