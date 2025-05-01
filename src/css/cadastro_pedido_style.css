@@ -1,96 +1,349 @@
-/* Estilo da área geral do formulário */
-.areaDeCadastro {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 40px;
-    padding: 40px;
-    background-color: #f7f9fc;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-/* Estilo do container do formulário */
-.containerForm {
-    background-color: #fff;
-    padding: 30px 40px;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    flex: 1;
-    min-width: 320px;
-    max-width: 600px;
-}
-
-/* Estilo do formulário */
-#cadastroPedido {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-    font-size: 16px;
-    color: #333;
-}
-
-/* Estilo das labels e inputs */
-label {
-    display: block;
-    font-weight: 600;
-    margin-bottom: 8px;
-    color: #222;
-}
-
-input[type="text"],
-input[type="datetime-local"],
-input[type="number"] {
-    width: 100%;
-    padding: 10px 12px;
-    font-size: 14px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
+* {
+    margin: 0px;
+    padding: 0px;
     box-sizing: border-box;
-    transition: border-color 0.3s ease;
 }
 
-input:focus {
-    outline: none;
-    border-color: #007BFF;
+
+.tall_button{
+    align-content: center;
+    border: 1px black solid;
+    text-align: center;
+    height: 100%;
 }
 
-input[type="checkbox"] {
-    margin-left: 8px;
-    transform: scale(1.2);
+/*
+ * |==================|
+ * |===== BANNER =====|
+ * |==================|
+*/
+
+.banner {
+    text-align: center;
+
+
+    border: 2px solid black;
+    background-color: rgba(250, 50, 10, 1);    
 }
 
-.btnSubmit {
-    background-color: #007BFF;
-    color: white;
-    padding: 12px 24px;
-    font-size: 16px;
+#bannerTitle{
+    text-align: right;
+    line-height: 50px;
+    font-size: 50px;
+    /* A fonte do banner deve ser de título */
+    font-family:Verdana, sans-serif;
+}
+
+.logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 130px; /* ocupa a altura toda da tela */
+}
+
+.logo-container img {
+    max-width: 80%;
+    height: 100%;
+}
+
+/*
+ * |================|
+ * |===== MENU =====|
+ * |================|
+*/
+
+.menu {
+    background-color: rgba(250,50,10,0.4);
+    padding: 20px;
+    font-family:Verdana, Geneva, Tahoma, sans-serif ;
+}
+
+.menu ul {
+   list-style:none;
+   text-align: center; 
+}
+
+.menu ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+.menu ul li a {
+    color: black;
+    text-decoration: none;
+}
+
+/*
+ * |====================|
+ * |===== CONTEUDO =====|
+ * |====================|
+*/
+
+
+
+.tall_button {
+    width: 300px;
+    height: 500px; /* altura dos botões */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid black;
+    border-radius: 12px;
+}
+
+.tall_button button {
+    width: 200%;
+    height: 100%;
+    font-size: 24px;
     border: none;
-    border-radius: 6px;
+    border-radius: 12px;
+    background-color: #FF033E;
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+    padding: 20px;
+    transition: background-color 0.3s ease;
+    line-height: 1.4;
+}
+
+.tall_button button:hover {
+    background-color: rgb(241, 113, 113);
+}
+
+
+/*
+ * |==================|
+ * |===== RODAPE =====|
+ * |==================|
+*/
+
+.rodape {
+    padding: 20px;
+    margin-top: 20px;
+    text-align: center;
+    background-color: darkred;
+    color:rgb(255, 255, 255);
+}
+
+
+body {
+    background-image: url('https://i.pinimg.com/236x/6e/ee/d4/6eeed4da8a937b4c434a542e2c9994f5.jpg');
+    background-repeat: repeat;
+    background-size: auto; /* ou 100px 100px para ajustar o tamanho do padrão */
+    background-position: top left;
+    background-size: 150px 150px;
+}
+
+.cadastro-pedidos {
+    max-width: 1200px;
+    margin: 40px auto;
+    background-color: rgba(214, 214, 214, 0.9);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    font-family: Verdana, sans-serif;
+}
+
+.cadastro-pedidos h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: rgb(180, 7, 7);
+}
+
+.formulario-pedido label {
+    display: block;
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+.formulario-pedido input,
+
+.formulario-pedido textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+.formulario-pedido button {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    margin-top: 20px;
+    background-color: #FF033E;
+    color: white;
+    font-size: 18px;
+    border: none;
+    border-radius: 8px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    grid-column: 1 / -1;
-    text-align: center;
-    margin-top: 20px;
 }
 
-.btnSubmit:hover {
-    background-color: #0056b3;
+.formulario-pedido button:hover {
+    background-color: rgb(241, 113, 113);
 }
 
 
-/* Estilo da tabela de pedidos (lado direito) */
-.containerTabela {
-    flex: 1;
-    min-width: 300px;
+.formulario-pedido select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
     background-color: #fff;
-    border-radius: 12px;
-    padding: 30px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    text-align: center;
 }
 
-/* Responsividade */
-@media (max-width: 768px) {
-    #cadastroPedido {
-        grid-template-columns: 1fr;
-    }
+.formulario-pedido input[readonly] {
+    background-color: #f9f9f9;
+    color: #333;
+    cursor: not-allowed;
 }
+
+
+
+
+.layout {
+    display: flex;
+    gap: 20px;
+    max-width: 90%;
+    margin: 40px auto;
+    padding: 0 20px;
+    flex-direction: column; /* Alinha os itens verticalmente */
+}
+
+
+.containerTabela h2 {
+    margin-top: 0;
+    color: rgb(180, 7, 7);
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+#pesquisarProduto {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+.tabela-rolavel {
+    max-height: 300px; /* Defina a altura máxima desejada */
+    overflow-y: auto; /* Adiciona a barra de rolagem vertical quando necessário */
+    border: 1px solid #ddd; /* Adiciona uma borda ao redor da área rolável */
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.tabela-rolavel table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+}
+
+.tabela-rolavel th, .tabela-rolavel td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+}
+
+.tabela-rolavel th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+    position: sticky; /* Para fixar o cabeçalho durante a rolagem */
+    top: 0;
+}
+
+.tabela-rolavel tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.carrinho-produtos {
+    margin-top: 20px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+.carrinho-produtos h2 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: rgb(180, 7, 7);
+    text-align: left; /* Alinha o título do carrinho à esquerda */
+}
+
+.carrinho-produtos ul {
+    list-style: none;
+    padding: 0;
+}
+
+.carrinho-produtos li {
+    padding: 8px 0;
+    border-bottom: 1px dotted #ccc;
+}
+
+.carrinho-produtos li:last-child {
+    border-bottom: none;
+}
+
+.carrinho-produtos p {
+    margin-top: 10px;
+    font-weight: bold;
+    text-align: right;
+}
+
+.carrinho-produtos {
+    margin-top: 20px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+.carrinho-produtos h2 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: rgb(180, 7, 7);
+    text-align: left;
+}
+
+.carrinho-produtos ul {
+    list-style: none;
+    padding: 0;
+}
+
+.carrinho-produtos li {
+    padding: 8px 0;
+    border-bottom: 1px dotted #ccc;
+    display: flex; /* Para alinhar o texto e o botão na mesma linha */
+    justify-content: space-between; /* Espaço entre o texto e o botão */
+    align-items: center; /* Alinhar verticalmente */
+}
+
+.carrinho-produtos li button {
+    background-color: #fcd600; /* Cor vermelha para o botão de remover */
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9em;
+}
+
+.carrinho-produtos li button:hover {
+    background-color: #fffb00;
+}
+
+.carrinho-produtos p {
+    margin-top: 10px;
+    font-weight: bold;
+    text-align: right;
+}
+
+
+  
