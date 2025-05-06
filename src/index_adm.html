@@ -1,15 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projeto de API</title>
+    <title>Projeto de API - Menu Inicial</title>
     <link rel="stylesheet" href="css/index_style.css">
 </head>
 <body>
     <header class="banner">
-        MENU
+        <div class="logo-container">
+            <img src="https://www.argenzio.com.br/img/Logo_Argenzio.png" alt="Logo Argenzio">
+        </div>
     </header>
+
     <nav class="menu">
         <ul>
             <li><a href="./conta.html">CONTA</a></li>
@@ -17,25 +20,29 @@
             <li><a href="#">CONTATO</a></li>
         </ul>
     </nav>
+
     <main class="conteudo">
-        <div class="container">
-            <div class="menuButton">
-                <h1>Ver pedidos</h1>
-            </div>
-            <div class="menuButton">
-                <h1>Gerenciar usuários</h1>
-            </div>       
-            <div class="menuButton">
-                <h1>Gerenciar estoque</h1>
-            </div>
-            <div class="menuButton">
-                <h1>Status do sistema</h1>
-            </div>
+        <div id="titulo">
+            <img src="img/API_cadastros.png" alt="Menu do Sistema" class="img-centralizada">
         </div>
+        <section class="containerMenu">
+            <a href="#" class="menuButton">
+                <h1>Ver<br>pedidos</h1>
+            </a>
+            <a href="#" class="menuButton">
+                <h1>Gerenciar<br>usuários</h1>
+            </a>
+            <a href="#" class="menuButton">
+                <h1>Gerenciar<br>estoque</h1>
+            </a>
+            <a href="#" class="menuButton">
+                <h1>Status do<br>sistema</h1>
+            </a>
+        </section>
     </main>
+
     <footer class="rodape">
-        Projeto Integrado 2025.1
-        Grupo 5, UNIFEOB
+        Projeto Integrado 2025.1 - Grupo 5, UNIFEOB
     </footer>
 </body>
 </html>
