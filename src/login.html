@@ -4,7 +4,47 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/login_style.css">
-    <title>Document</title>
+    <title>Login</title>
+
+    <script>
+        async function fazerLogin() {
+            const email = document.getElementById('login').value;
+            const senha = document.getElementById('psw').value;
+    
+            if (!email || !senha) {
+                alert('Preencha todos os campos.');
+                return;
+            }
+    
+            try {
+                const response = await fetch('http://localhost:4040/user/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ email, senha })
+                });
+    
+                const data = await response.json();
+    
+                if (response.ok && data.success) {
+                    // Armazena o token se quiser
+                    localStorage.setItem('token', data.token);
+                    // Redireciona para outra página
+                    window.location.href = 'index_ven.html';
+                } else {
+                    alert(data.message || 'Erro ao fazer login.');
+                }
+            } catch (error) {
+                console.error(error);
+                alert('Erro de conexão com o servidor.');
+            }
+        }
+    </script>
+    
+    
+
+
 </head>
 <body>
     <!-- Imagem do Logo Fora da div -->
@@ -20,7 +60,7 @@
             <input type="text" name="login" id="login"><br>
             <label for="senha">Senha</label><br>
             <input type="password" name="psw" id="psw"><br><br>
-            <input type="button" value="Logar" onclick="alert('clique aqui')"> 
+            <input type="button" value="Logar" onclick="fazerLogin()"> 
         </form>
     </div>
 </body>
