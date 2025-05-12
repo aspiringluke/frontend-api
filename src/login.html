@@ -25,7 +25,7 @@
             if (data.success) {
                 localStorage.setItem('token', data.token);
 
-                window.location.href = '/index_ven.html';
+                window.location.href = './index_ven.html';
             } else {
                 alert(data.message || 'Erro ao fazer login.');
             }
