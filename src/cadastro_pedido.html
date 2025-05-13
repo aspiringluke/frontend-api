@@ -6,88 +6,141 @@
     <title>Cadastrar Pedido</title>
     <link rel="stylesheet" href="css/cadastro_pedido_style.css">
     <style>
-        /* Adicione ou modifique os estilos existentes no seu arquivo CSS */
-
+        /* Estilos adicionais (se necessário) */
     </style>
     <script>
-        let carrinho = [];
+let carrinho = [];
 
-        function adicionarAoCarrinho(nome, preco) {
-            const itemNoCarrinho = carrinho.find(item => item.nome === nome);
+function adicionarAoCarrinho(idProduto, nome, preco) {
+    const itemNoCarrinho = carrinho.find(item => item.idProduto === idProduto);
 
-            if (itemNoCarrinho) {
-                itemNoCarrinho.quantidade++;
-            } else {
-                carrinho.push({ nome: nome, preco: preco, quantidade: 1 });
-            }
+    if (itemNoCarrinho) {
+        itemNoCarrinho.quantidade++;
+    } else {
+        carrinho.push({ idProduto: idProduto, nome: nome, preco: preco, quantidade: 1 });
+    }
 
-            atualizarCarrinho();
+    atualizarCarrinho();
+}
+
+function atualizarCarrinho() {
+    const listaCarrinho = document.getElementById('listaCarrinho');
+    const totalCarrinho = document.getElementById('totalCarrinho');
+
+    listaCarrinho.innerHTML = '';
+
+    let total = 0;
+
+    carrinho.forEach((item, index) => {
+        const listItem = document.createElement('li');
+        listItem.textContent = `${item.nome}, ${item.quantidade} unidade${item.quantidade > 1 ? 's' : ''}, R$${(item.preco).toFixed(2).replace('.', ',')}`;
+
+        const botaoRemover = document.createElement('button');
+        botaoRemover.textContent = 'Remover';
+        botaoRemover.onclick = () => removerDoCarrinho(index);
+        listItem.appendChild(botaoRemover);
+
+        listaCarrinho.appendChild(listItem);
+        total += item.preco * item.quantidade;
+    });
+
+    totalCarrinho.textContent = total.toFixed(2).replace('.', ',');
+}
+
+function removerDoCarrinho(index) {
+    carrinho.splice(index, 1);
+    atualizarCarrinho();
+}
+
+function pesquisarProdutos() {
+    const input = document.getElementById("pesquisarProduto");
+    const filtro = input.value.toUpperCase();
+    const tabela = document.querySelector(".tabela-rolavel table");
+    const linhas = tabela.getElementsByTagName("tr");
+
+    for (let i = 1; i < linhas.length; i++) {
+        const colunaNome = linhas[i].getElementsByTagName("td")[0];
+        if (colunaNome) {
+            const textoNome = colunaNome.textContent || colunaNome.innerText;
+            linhas[i].style.display = textoNome.toUpperCase().indexOf(filtro) > -1 ? "" : "none";
         }
+    }
+}
 
-        function atualizarCarrinho() {
-            const listaCarrinho = document.getElementById('listaCarrinho');
-            const totalCarrinho = document.getElementById('totalCarrinho');
-            let total = 0;
-        
-            listaCarrinho.innerHTML = ''; // Limpa a lista do carrinho
-            
-            /**
-             * TODO: Deixar o loop mais eficiente.
-             * Rodar o loop para cada produto adicionado não é interessante,
-             * porque pode afetar o desempenho com uma quantidade maior de produtos.
-             */
-            carrinho.forEach((item, index) => { // Adicionamos o 'index' para identificar o item
-                const listItem = document.createElement('li');
-                listItem.textContent = `${item.nome} x${item.quantidade} - R$${(item.preco * item.quantidade).toFixed(2)}`;
-        
-                const botaoRemover = document.createElement('button');
-                botaoRemover.textContent = 'Remover';
-                botaoRemover.onclick = () => removerDoCarrinho(index); // Chama a função ao clicar
-                listItem.appendChild(botaoRemover);
-        
-                listaCarrinho.appendChild(listItem);
-                total += item.preco * item.quantidade;
+window.onload = async function () {
+    try {
+        const response = await fetch('http://localhost:4040/produtos');
+        const data = await response.json();
+
+        if (data.success && Array.isArray(data.values)) {
+            const corpoTabela = document.getElementById('corpoTabelaProdutos');
+            corpoTabela.innerHTML = '';
+
+            data.values.forEach(produto => {
+                const linha = document.createElement('tr');
+
+                const colunaNome = document.createElement('td');
+                colunaNome.textContent = produto.descricao;
+
+                const colunaPreco = document.createElement('td');
+                const preco = parseFloat(produto.valorUnitario);
+                colunaPreco.textContent = `R$${preco.toFixed(2).replace('.', ',')}`;
+
+                const colunaAcao = document.createElement('td');
+                const botao = document.createElement('button');
+                botao.textContent = 'Adicionar';
+                botao.onclick = () => adicionarAoCarrinho(produto.idProduto, produto.descricao, preco);
+
+                colunaAcao.appendChild(botao);
+
+                linha.appendChild(colunaNome);
+                linha.appendChild(colunaPreco);
+                linha.appendChild(colunaAcao);
+
+                corpoTabela.appendChild(linha);
             });
-        
-            totalCarrinho.textContent = total.toFixed(2);
+        } else {
+            console.error('Erro ao buscar produtos:', data.message);
         }
+    } catch (error) {
+        console.error('Erro de rede ao buscar produtos:', error);
+    }
+};
 
+async function criarPedido() {
+    const pedido = {
+        status: 'Pendente',
+        data: new Date().toISOString(),
+        idUsuario: 1,
+        idCliente: 123, // Substitua por um ID real
+        itens: carrinho.map(item => ({
+            idProduto: item.idProduto,
+            quantidade: item.quantidade,
+            valorCombinado: item.preco * item.quantidade
+        }))
+    };
 
-        function removerDoCarrinho(index) {
-            carrinho.splice(index, 1); // Remove 1 item do array 'carrinho' no índice especificado
-            atualizarCarrinho(); // Atualiza a exibição do carrinho
+    try {
+        const response = await fetch('http://localhost:4040/pedidos', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(pedido)
+        });
+
+        const data = await response.json();
+
+        if (data.success) {
+            alert('Pedido criado com sucesso! ID do Pedido: ' + data.idPedido);
+        } else {
+            console.error('Erro na resposta do servidor:', data);
+            alert('Erro ao criar o pedido:\n' + JSON.stringify(data, null, 2));
         }
+    } catch (error) {
+        console.error('Erro de rede:', error);
+        alert('Erro de rede: ' + error.message);
+    }
+}
 
-        function calcularTotal() {
-            let selectProdutos = document.getElementById('produtos');
-            let total = 0;
-
-            for (let option of selectProdutos.options) {
-                if (option.selected) {
-                    total += parseFloat(option.getAttribute('data-preco'));
-                }
-            }
-            document.getElementById('valorTotal').value = total.toFixed(2).replace('.', ',');
-        }
-
-        function pesquisarProdutos() {
-            const input = document.getElementById("pesquisarProduto");
-            const filtro = input.value.toUpperCase();
-            const tabela = document.querySelector(".tabela-rolavel table");
-            const linhas = tabela.getElementsByTagName("tr");
-
-            for (let i = 1; i < linhas.length; i++) { // Começa do 1 para ignorar o cabeçalho
-                const colunaNome = linhas[i].getElementsByTagName("td")[0]; // Pega a coluna do nome
-                if (colunaNome) {
-                    const textoNome = colunaNome.textContent || colunaNome.innerText;
-                    if (textoNome.toUpperCase().indexOf(filtro) > -1) {
-                        linhas[i].style.display = "";
-                    } else {
-                        linhas[i].style.display = "none";
-                    }
-                }
-            }
-        }
     </script>
 </head>
 <body>
@@ -110,7 +163,7 @@
         <div class="layout">
             <div class="areaDeCadastro">
                 <h1>Cadastrar Pedido</h1>
-                <form action="cadastrar_pedido.js" method="POST" class="formulario-pedido">
+                <form onsubmit="event.preventDefault(); criarPedido();" class="formulario-pedido">
                     <label for="nomeCliente">Nome do Cliente:</label>
                     <input type="text" id="nomeCliente" name="nomeCliente" required>
 
@@ -118,14 +171,14 @@
                     <input type="number" id="clienteCEP" name="clienteCEP" required>
 
                     <label for="clienteCNPJ">CNPJ</label>
-                    <input type="number" id="clienteCNPJ" name="clienteCEPJ" required>
+                    <input type="number" id="clienteCNPJ" name="clienteCNPJ" required>
 
                     <label for="clienteContato">Forma de Contato</label>
-                    <input type="tel" id="clienteContato" name="clienteContato" placeholder="telefone" required>
-                    <input type="email" id="clienteContato" name="clienteContato" placeholder="email" required>
+                    <input type="tel" id="clienteTelefone" name="clienteTelefone" placeholder="telefone" required>
+                    <input type="email" id="clienteEmail" name="clienteEmail" placeholder="email" required>
 
                     <label for="dataPedido">Data</label>
-                    <input type="date" id="dataPedido" nome="dataPedido" required|>
+                    <input type="date" id="dataPedido" name="dataPedido" required>
                     <button type="submit">Cadastrar pedido</button>
                 </form>
             </div>
@@ -143,74 +196,18 @@
                             </tr>
                         </thead>
                         <tbody id="corpoTabelaProdutos">
-                            <tr>
-                                <td>Produto A</td>
-                                <td>R$100,00</td>
-                                <td><button onclick="adicionarAoCarrinho('Produto A', 100)">Adicionar</button></td>
-                            </tr>
-                            <tr>
-                                <td>Produto B</td>
-                                <td>R$150,00</td>
-                                <td><button onclick="adicionarAoCarrinho('Produto B', 150)">Adicionar</button></td>
-                            </tr>
-                            <tr>
-                                <td>Produto C</td>
-                                <td>R$200,00</td>
-                                <td><button onclick="adicionarAoCarrinho('Produto C', 200)">Adicionar</button></td>
-                            </tr>
-                            <tr>
-                                <td>Produto D</td>
-                                <td>R$250,00</td>
-                                <td><button onclick="adicionarAoCarrinho('Produto D', 250)">Adicionar</button></td>
-                            </tr>
-                            <tr>
-                                <td>Produto E</td>
-                                <td>R$300,00</td>
-                                <td><button onclick="adicionarAoCarrinho('Produto E', 300)">Adicionar</button></td>
-                            </tr>
-                            <tr>
-                                <td>Produto F</td>
-                                <td>R$350,00</td>
-                                <td><button onclick="adicionarAoCarrinho('Produto F', 350)">Adicionar</button></td>
-                            </tr>
-                            <tr>
-                                <td>Produto G</td>
-                                <td>R$400,00</td>
-                                <td><button onclick="adicionarAoCarrinho('Produto G', 400)">Adicionar</button></td>
-                            </tr>
-                            <tr>
-                                <td>Produto H</td>
-                                <td>R$450,00</td>
-                                <td><button onclick="adicionarAoCarrinho('Produto H', 450)">Adicionar</button></td>
-                            </tr>
-                            <tr>
-                                <td>Produto I</td>
-                                <td>R$500,00</td>
-                                <td><button onclick="adicionarAoCarrinho('Produto I', 500)">Adicionar</button></td>
-                            </tr>
-                            <tr>
-                                <td>Produto J</td>
-                                <td>R$550,00</td>
-                                <td><button onclick="adicionarAoCarrinho('Produto J', 550)">Adicionar</button></td>
-                            </tr>
+                            <!-- Produtos serão inseridos aqui -->
                         </tbody>
                     </table>
                 </div>
                 <div class="carrinho-produtos">
                     <h2>Carrinho de Produtos</h2>
-                    <ul id="listaCarrinho">
-                        </ul>
-                    <p>Total: R$ <span id="totalCarrinho">0.00</span></p>
+                    <ul id="listaCarrinho"></ul>
+                    <p>Total: R$ <span id="totalCarrinho">0,00</span></p>
                 </div>
             </div>
         </div>
     </main>
-
-    <br>
-
-    <footer class="rodape">
-        Projeto Integrado 2025.1<br>
-        Grupo 5, UNIFEOB
-    </footer>
 </body>
 </html>
+
