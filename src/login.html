@@ -7,46 +7,43 @@
     <title>Login</title>
 
     <script>
-        async function fazerLogin() {
-        const email = document.getElementById('email').value;
-        const senha = document.getElementById('psw').value;
-
-        try {
-            const response = await fetch('http://localhost:4040/login', {
+        function fazerLogin() {
+            const email = document.getElementById('email').value;
+            const senha = document.getElementById('psw').value;
+            
+            fetch('http://localhost:4040/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({ email, senha })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    localStorage.setItem('token', data.token);
+                    
+                    if(data.id === 2){
+                        window.location.href = './index_ven.html';
+                    }else{
+                        window.location.href = './index_adm.html';
+                    }
+                } else {
+                    alert(data.message || 'Erro ao fazer login.');
+                }
+            })
+            .catch(error => {
+                console.error(err);
+                alert('Erro de conexão com o servidor.');
             });
-
-            const data = await response.json();
-
-            if (data.success) {
-                localStorage.setItem('token', data.token);
-
-                window.location.href = './index_ven.html';
-            } else {
-                alert(data.message || 'Erro ao fazer login.');
-            }
-        } catch (err) {
-            console.error(err);
-            alert('Erro de conexão com o servidor.');
         }
-    }
     </script>
-    
-    
-
-
 </head>
 <body>
-    <!-- Imagem do Logo Fora da div -->
     <div id="logo-container">
         <img src="https://www.argenzio.com.br/img/Logo_Argenzio.png" alt="Logo Argenzio" id="logo">
     </div>
 
-    <!-- Caixa de login -->
     <div id="box1">
         <p id="p1">Logar </p>
         <form class="login">

@@ -104,6 +104,7 @@ html, body{
     flex: 1;
     display: flex;
     flex-direction: column;
+    padding-top:10%;
 }
 
 .containerMenu {
@@ -119,7 +120,7 @@ html, body{
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 650px;
+    width: 550px;
     height: 325px;
     padding: 30px 30px;
     border: 2px solid #D32F2F;
