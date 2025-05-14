@@ -8,140 +8,6 @@
     <style>
         /* Estilos adicionais (se necessário) */
     </style>
-    <script>
-let carrinho = [];
-
-function adicionarAoCarrinho(idProduto, nome, preco) {
-    const itemNoCarrinho = carrinho.find(item => item.idProduto === idProduto);
-
-    if (itemNoCarrinho) {
-        itemNoCarrinho.quantidade++;
-    } else {
-        carrinho.push({ idProduto: idProduto, nome: nome, preco: preco, quantidade: 1 });
-    }
-
-    atualizarCarrinho();
-}
-
-function atualizarCarrinho() {
-    const listaCarrinho = document.getElementById('listaCarrinho');
-    const totalCarrinho = document.getElementById('totalCarrinho');
-
-    listaCarrinho.innerHTML = '';
-
-    let total = 0;
-
-    carrinho.forEach((item, index) => {
-        const listItem = document.createElement('li');
-        listItem.textContent = `${item.nome}, ${item.quantidade} unidade${item.quantidade > 1 ? 's' : ''}, R$${(item.preco).toFixed(2).replace('.', ',')}`;
-
-        const botaoRemover = document.createElement('button');
-        botaoRemover.textContent = 'Remover';
-        botaoRemover.onclick = () => removerDoCarrinho(index);
-        listItem.appendChild(botaoRemover);
-
-        listaCarrinho.appendChild(listItem);
-        total += item.preco * item.quantidade;
-    });
-
-    totalCarrinho.textContent = total.toFixed(2).replace('.', ',');
-}
-
-function removerDoCarrinho(index) {
-    carrinho.splice(index, 1);
-    atualizarCarrinho();
-}
-
-function pesquisarProdutos() {
-    const input = document.getElementById("pesquisarProduto");
-    const filtro = input.value.toUpperCase();
-    const tabela = document.querySelector(".tabela-rolavel table");
-    const linhas = tabela.getElementsByTagName("tr");
-
-    for (let i = 1; i < linhas.length; i++) {
-        const colunaNome = linhas[i].getElementsByTagName("td")[0];
-        if (colunaNome) {
-            const textoNome = colunaNome.textContent || colunaNome.innerText;
-            linhas[i].style.display = textoNome.toUpperCase().indexOf(filtro) > -1 ? "" : "none";
-        }
-    }
-}
-
-window.onload = async function () {
-    try {
-        const response = await fetch('http://localhost:4040/produtos');
-        const data = await response.json();
-
-        if (data.success && Array.isArray(data.values)) {
-            const corpoTabela = document.getElementById('corpoTabelaProdutos');
-            corpoTabela.innerHTML = '';
-
-            data.values.forEach(produto => {
-                const linha = document.createElement('tr');
-
-                const colunaNome = document.createElement('td');
-                colunaNome.textContent = produto.descricao;
-
-                const colunaPreco = document.createElement('td');
-                const preco = parseFloat(produto.valorUnitario);
-                colunaPreco.textContent = `R$${preco.toFixed(2).replace('.', ',')}`;
-
-                const colunaAcao = document.createElement('td');
-                const botao = document.createElement('button');
-                botao.textContent = 'Adicionar';
-                botao.onclick = () => adicionarAoCarrinho(produto.idProduto, produto.descricao, preco);
-
-                colunaAcao.appendChild(botao);
-
-                linha.appendChild(colunaNome);
-                linha.appendChild(colunaPreco);
-                linha.appendChild(colunaAcao);
-
-                corpoTabela.appendChild(linha);
-            });
-        } else {
-            console.error('Erro ao buscar produtos:', data.message);
-        }
-    } catch (error) {
-        console.error('Erro de rede ao buscar produtos:', error);
-    }
-};
-
-async function criarPedido() {
-    const pedido = {
-        status: 'Pendente',
-        data: new Date().toISOString(),
-        idUsuario: 1,
-        idCliente: 123, // Substitua por um ID real
-        itens: carrinho.map(item => ({
-            idProduto: item.idProduto,
-            quantidade: item.quantidade,
-            valorCombinado: item.preco * item.quantidade
-        }))
-    };
-
-    try {
-        const response = await fetch('http://localhost:4040/pedidos', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(pedido)
-        });
-
-        const data = await response.json();
-
-        if (data.success) {
-            alert('Pedido criado com sucesso! ID do Pedido: ' + data.idPedido);
-        } else {
-            console.error('Erro na resposta do servidor:', data);
-            alert('Erro ao criar o pedido:\n' + JSON.stringify(data, null, 2));
-        }
-    } catch (error) {
-        console.error('Erro de rede:', error);
-        alert('Erro de rede: ' + error.message);
-    }
-}
-
-    </script>
 </head>
 <body>
     <header class="banner">
@@ -208,6 +74,143 @@ async function criarPedido() {
             </div>
         </div>
     </main>
+
+    <script>
+let carrinho = [];
+
+function adicionarAoCarrinho(idProduto, nome, preco) {
+    const itemNoCarrinho = carrinho.find(item => item.idProduto === idProduto);
+
+    if (itemNoCarrinho) {
+        itemNoCarrinho.quantidade++;
+    } else {
+        carrinho.push({ idProduto: idProduto, nome: nome, preco: preco, quantidade: 1 });
+    }
+
+    atualizarCarrinho();
+}
+
+function atualizarCarrinho() {
+    const listaCarrinho = document.getElementById('listaCarrinho');
+    const totalCarrinho = document.getElementById('totalCarrinho');
+
+    listaCarrinho.innerHTML = '';
+
+    let total = 0;
+
+    carrinho.forEach((item, index) => {
+        const listItem = document.createElement('li');
+        listItem.textContent = `${item.nome}, ${item.quantidade} unidade${item.quantidade > 1 ? 's' : ''}, R$${(item.preco).toFixed(2).replace('.', ',')}`;
+
+        const botaoRemover = document.createElement('button');
+        botaoRemover.textContent = 'Remover';
+        botaoRemover.onclick = () => removerDoCarrinho(index);
+        listItem.appendChild(botaoRemover);
+
+        listaCarrinho.appendChild(listItem);
+        total += item.preco * item.quantidade;
+    });
+
+    totalCarrinho.textContent = total.toFixed(2).replace('.', ',');
+}
+
+function removerDoCarrinho(index) {
+    carrinho.splice(index, 1);
+    atualizarCarrinho();
+}
+
+function pesquisarProdutos() {
+    const input = document.getElementById("pesquisarProduto");
+    const filtro = input.value.toUpperCase();
+    const tabela = document.querySelector(".tabela-rolavel table");
+    const linhas = tabela.getElementsByTagName("tr");
+
+    for (let i = 1; i < linhas.length; i++) {
+        const colunaNome = linhas[i].getElementsByTagName("td")[0];
+        if (colunaNome) {
+            const textoNome = colunaNome.textContent || colunaNome.innerText;
+            linhas[i].style.display = textoNome.toUpperCase().indexOf(filtro) > -1 ? "" : "none";
+        }
+    }
+}
+
+window.onload = async function () {
+    try {
+        let token = localStorage.getItem('token')
+        const response = await fetch('http://localhost:4040/produtos',{headers:{'authorization':'bearer ' + token}});
+        const data = await response.json();
+
+        if (data.success ) {
+            const corpoTabela = document.getElementById('corpoTabelaProdutos');
+            corpoTabela.innerHTML = '';
+
+            data.values.forEach(produto => {
+                const linha = document.createElement('tr');
+
+                const colunaNome = document.createElement('td');
+                colunaNome.textContent = produto.descricao;
+
+                const colunaPreco = document.createElement('td');
+                const preco = parseFloat(produto.valorUnitario);
+                colunaPreco.textContent = `R$${preco.toFixed(2).replace('.', ',')}`;
+
+                const colunaAcao = document.createElement('td');
+                const botao = document.createElement('button');
+                botao.textContent = 'Adicionar';
+                botao.onclick = () => adicionarAoCarrinho(produto.idProduto, produto.descricao, preco);
+
+                colunaAcao.appendChild(botao);
+
+                linha.appendChild(colunaNome);
+                linha.appendChild(colunaPreco);
+                linha.appendChild(colunaAcao);
+
+                corpoTabela.appendChild(linha);
+            });
+        } else {
+            console.error('Erro ao buscar produtos:', data.message);
+        }
+    } catch (error) {
+        console.error('Erro de rede ao buscar produtos:', error);
+    }
+};
+
+async function criarPedido() {
+    let token = localStorage.getItem('token')
+    const pedido = {
+        status: 'Pendente',
+        data: new Date().toISOString(),
+        idUsuario: 1,
+        idCliente: 123, // Substitua por um ID real
+        itens: carrinho.map(item => ({
+            idProduto: item.idProduto,
+            quantidade: item.quantidade,
+            valorCombinado: item.preco * item.quantidade
+        }))
+    };
+
+    try {
+        const response = await fetch('http://localhost:4040/pedidos', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'authorization':'bearer ' + token },
+            body: JSON.stringify(pedido)
+        });
+
+        const data = await response.json();
+
+        if (data.success) {
+            alert('Pedido criado com sucesso! ID do Pedido: ' + data.idPedido);
+        } else {
+            console.error('Erro na resposta do servidor:', data);
+            alert('Erro ao criar o pedido:\n' + JSON.stringify(data, null, 2));
+        }
+    } catch (error) {
+        console.error('Erro de rede:', error);
+        alert('Erro de rede: ' + error.message);
+    }
+}
+
+    </script>
 </body>
 </html>
 
