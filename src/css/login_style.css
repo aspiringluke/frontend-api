@@ -1,70 +1,80 @@
-/* Definindo a centralização da página */
+/* Centralização e plano de fundo */
 body, html {
     height: 100%;
     margin: 0;
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column; /* Coloca os itens um embaixo do outro */
+    flex-direction: column;
+    background-color: #f4f4f4; /* Fallback para quando a imagem não carregar */
+    background-image: url('https://www.transparenttextures.com/patterns/elastoplast.png');
+    background-repeat: repeat;
+    background-size: auto;
+    background-position: top left;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* Estilos para o container da imagem */
+/* Container do logo */
 #logo-container {
-    margin-bottom: 30px; /* Espaço entre a imagem e a div do login */
-    text-align: center; /* Centraliza a imagem */
-}
-
-/* Estilo para a imagem do logo */
-#logo {
-    width: 300px; /* Definindo um tamanho adequado para a imagem */
-}
-
-/* Estilizando a caixa do formulário */
-#box1 {
-    width: 300px;
-    padding: 20px;
-    border: 1px solid #d60a0a;
-    border-radius: 10px;
+    margin-bottom: 30px;
     text-align: center;
 }
 
-/* Estilos para o título */
+/* Logo */
+#logo {
+    width: 300px;
+}
+
+/* Caixa do formulário */
+#box1 {
+    width: 300px;
+    padding: 25px;
+    border: 1px solid #d60a0a;
+    border-radius: 10px;
+    text-align: center;
+    background-color: white; /* Para dar contraste com o background */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Título */
 #p1 {
     font-size: 24px;
     margin-top: 10px;
     margin-bottom: 20px;
+    color: #333;
 }
 
-/* Estilos para o formulário */
+/* Formulário */
 form {
     display: flex;
     flex-direction: column;
     align-items: center;
-
 }
 
-/* Estilos dos campos de input */
-input[type="text"], input[type="password"] {
+/* Campos de input */
+input[type="text"],
+input[type="password"] {
     width: 100%;
-    padding: 7px;
-    margin: 5px 0;
+    padding: 10px;
+    margin: 8px 0;
     border: 1px solid #f01212;
-    border-radius: 5px;
+    border-radius: 6px;
+    font-size: 14px;
 }
 
-/* Estilo para o botão */
+/* Botão */
 input[type="button"] {
     width: 100%;
-    padding: 12px; /* Preenchimento dentro do botão */
-    font-size: 20px; /* Aumentando o tamanho da fonte do texto do botão */
+    padding: 12px;
+    font-size: 16px;
     background-color: #ff0000;
     color: white;
     border: none;
-    border-radius: 10px;
+    border-radius: 8px;
     cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
-
 input[type="button"]:hover {
-    background-color: #462626;
+    background-color: #b30000;
 }

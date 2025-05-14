@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Cliente</title>
+    <link rel="stylesheet" href="css/index_style.css">
+    <link rel="stylesheet" href="css/cadastro_clientes_style.css">
+</head>
+<body>
+    <header class="banner">
+        <div class="logo-container">
+            <img src="https://www.argenzio.com.br/img/Logo_Argenzio.png" alt="Logo Argenzio">
+        </div>
+    </header>
+    
+    <nav class="menu">
+        <ul>
+            <li><a href="index_ven.html">HOME</a></li>
+            <li><a href="./conta.html">CONTA</a></li>
+            <li><a href="./ajuda.html">AJUDA</a></li>
+            <li><a href="#">CONTATO</a></li>
+        </ul>
+    </nav>
+
+    <main class="conteudo">
+        <div class="areaDeCadastro">
+            <div class="containerForm">
+                <form id="cadastroCliente">
+                    <h2 class="formTitle">Cadastro de Cliente</h2>
+
+                    <label for="nome">Nome</label>
+                    <input type="text" id="nome" name="nome" required>
+
+                    <label for="cep">CEP</label>
+                    <input type="text" id="cep" name="cep" required pattern="\d{5}-?\d{3}" placeholder="Ex: 12345-678">
+
+                    <label for="cnpj">CNPJ</label>
+                    <input type="text" id="cnpj" name="cnpj" required placeholder="Ex: 12.345.678/0001-90">
+
+                    <label for="telefone">Telefone</label>
+                    <input type="text" id="telefone" name="telefone" required placeholder="Ex: (11) 91234-5678">
+
+                    <div class="botaoContainer">
+                        <button type="submit" class="btnSubmit">Cadastrar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <footer class="rodape">
+        Projeto Integrado 2025.1 - Grupo 5, UNIFEOB
+    </footer>

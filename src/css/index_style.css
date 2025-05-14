@@ -40,25 +40,45 @@ html, body{
  * |================|
 */
 
+/* Menu de navegação principal */
 .menu {
-    background-color: rgba(250,50,10,0.4);
-    padding: 20px;
-    font-family:Verdana, Geneva, Tahoma, sans-serif ;
+    width: 100%;
+    background-color: #e4db5d; /* Cor principal do menu */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+/* Lista do menu */
 .menu ul {
-   list-style: none;
-   text-align: center; 
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center; /* Centraliza os itens */
+    flex-wrap: wrap; /* Quebra em telas pequenas */
 }
 
+/* Itens do menu */
 .menu ul li {
-    display: inline;
     margin: 0 15px;
 }
 
+/* Links do menu */
 .menu ul li a {
-    color: black;
+    display: block;
+    padding: 15px 20px;
+    color: rgb(231, 62, 62);
     text-decoration: none;
+    font-weight: 500;
+    font-size: 16px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    border-radius: 6px;
+}
+
+/* Efeito hover */
+.menu ul li a:hover {
+    background-color: #a54e4e;
+    color: #f1f1f1;
 }
 
 .logo-container {
