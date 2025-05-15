@@ -40,7 +40,6 @@
                                     </tr>
                                 </thead>
                                 <tbody id="corpoTabelaClientes">
-                                    <!-- Clientes serão inseridos aqui via JS -->
                                 </tbody>
                             </table>
                         </div>
@@ -65,7 +64,6 @@
                             </tr>
                         </thead>
                         <tbody id="corpoTabelaProdutos">
-                            <!-- Produtos serão inseridos aqui via JS -->
                         </tbody>
                     </table>
                 </div>
@@ -216,10 +214,10 @@
                         colunaNome.textContent = cliente.nome;
 
                         const colunaCNPJ = document.createElement('td');
-                        colunaCNPJ.textContent = cliente.cnpj;
+                        colunaCNPJ.textContent = cliente.CNPJ;
 
                         const colunaCEP = document.createElement('td');
-                        colunaCEP.textContent = cliente.cep;
+                        colunaCEP.textContent = cliente.CEP;
 
                         const colunaTelefone = document.createElement('td');
                         colunaTelefone.textContent = cliente.telefone;

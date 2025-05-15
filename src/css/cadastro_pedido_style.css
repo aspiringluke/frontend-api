@@ -192,7 +192,7 @@ body {
     width: 100%;
     padding: 15px;
     margin-top: 20px;
-    background-color: #FF033E;
+    background-color: #D32F2F;
     color: white;
     font-size: 18px;
     border: none;
@@ -202,7 +202,7 @@ body {
 }
 
 .formulario-pedido button:hover {
-    background-color: rgb(241, 113, 113);
+    background-color: rgb(83, 19, 19);
 }
 
 
