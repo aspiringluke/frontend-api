@@ -5,9 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastrar Pedido</title>
     <link rel="stylesheet" href="css/cadastro_pedido_style.css">
-    <style>
-        /* Estilos adicionais (se necessário) */
-    </style>
 </head>
 <body>
     <header class="banner">
@@ -28,32 +25,26 @@
             <div class="areaDeCadastro">
                 <h1>Cadastrar Pedido</h1>
                 <form onsubmit="event.preventDefault(); criarPedido();" class="formulario-pedido">
-                   
-
-    <div class="containerTabela">
-                <h2>Tabela de Clientes</h2>
-                <input type="text" id="pesquisarCliente" onkeyup="pesquisarClientes()" placeholder="Pesquisar por nome...">
-                <div class="tabela-rolavel">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Nome</th>
-                                <th>CNPJ</th>
-                                <th>CEP</th>
-                                <th>Telefone</th>
-                                <th>Adicionar Ao Carrinho</th>
-                            </tr>
-                        </thead>
-                        <tbody id="corpoTabelaClientes">
-                            <!-- Clientes serão inseridos aqui via JS -->
-                        </tbody>
-                    </table>
-                </div>             
-
-
-
-
-
+                    <div class="containerTabela">
+                        <h2>Tabela de Clientes</h2>
+                        <input type="text" id="pesquisarCliente" onkeyup="pesquisarClientes()" placeholder="Pesquisar por nome...">
+                        <div class="tabela-rolavel">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Nome</th>
+                                        <th>CNPJ</th>
+                                        <th>CEP</th>
+                                        <th>Telefone</th>
+                                        <th>Adicionar Cliente</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="corpoTabelaClientes">
+                                    <!-- Clientes serão inseridos aqui via JS -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
 
                     <label for="dataPedido">Data</label>
                     <input type="date" id="dataPedido" name="dataPedido" required>
@@ -63,7 +54,7 @@
 
             <div class="containerTabela">
                 <h2>Tabela de Produtos</h2>
-                <input type="text" id="pesquisar" onkeyup="pesquisarProdutos()" placeholder="Pesquisar por nome...">
+                <input type="text" id="pesquisarProduto" onkeyup="pesquisarProdutos()" placeholder="Pesquisar por nome...">
                 <div class="tabela-rolavel">
                     <table>
                         <thead>
@@ -74,7 +65,7 @@
                             </tr>
                         </thead>
                         <tbody id="corpoTabelaProdutos">
-                            <!-- Produtos serão inseridos aqui -->
+                            <!-- Produtos serão inseridos aqui via JS -->
                         </tbody>
                     </table>
                 </div>
@@ -88,159 +79,222 @@
     </main>
 
     <script>
-let carrinho = [];
+        let carrinho = [];
+        let clienteSelecionado = null;
 
-function adicionarAoCarrinho(idProduto, nome, preco) {
-    const itemNoCarrinho = carrinho.find(item => item.idProduto === idProduto);
-
-    if (itemNoCarrinho) {
-        itemNoCarrinho.quantidade++;
-    } else {
-        carrinho.push({ idProduto: idProduto, nome: nome, preco: preco, quantidade: 1 });
-    }
-
-    atualizarCarrinho();
-}
-
-function atualizarCarrinho() {
-    const listaCarrinho = document.getElementById('listaCarrinho');
-    const totalCarrinho = document.getElementById('totalCarrinho');
-
-    listaCarrinho.innerHTML = '';
-
-    let total = 0;
-
-    carrinho.forEach((item, index) => {
-        const listItem = document.createElement('li');
-        listItem.textContent = `${item.nome}, ${item.quantidade} unidade${item.quantidade > 1 ? 's' : ''}, R$${(item.preco).toFixed(2).replace('.', ',')}`;
-
-        const botaoRemover = document.createElement('button');
-        botaoRemover.textContent = 'Remover';
-        botaoRemover.onclick = () => removerDoCarrinho(index);
-        listItem.appendChild(botaoRemover);
-
-        listaCarrinho.appendChild(listItem);
-        total += item.preco * item.quantidade;
-    });
-
-    totalCarrinho.textContent = total.toFixed(2).replace('.', ',');
-}
-
-function removerDoCarrinho(index) {
-    carrinho.splice(index, 1);
-    atualizarCarrinho();
-}
-
-function pesquisarProdutos() {
-    const input = document.getElementById("pesquisarProduto");
-    const filtro = input.value.toUpperCase();
-    const tabela = document.querySelector(".tabela-rolavel table");
-    const linhas = tabela.getElementsByTagName("tr");
-
-    for (let i = 1; i < linhas.length; i++) {
-        const colunaNome = linhas[i].getElementsByTagName("td")[0];
-        if (colunaNome) {
-            const textoNome = colunaNome.textContent || colunaNome.innerText;
-            linhas[i].style.display = textoNome.toUpperCase().indexOf(filtro) > -1 ? "" : "none";
+        function adicionarAoCarrinho(idProduto, nome, preco) {
+            const itemNoCarrinho = carrinho.find(item => item.idProduto === idProduto);
+            if (itemNoCarrinho) {
+                itemNoCarrinho.quantidade++;
+            } else {
+                carrinho.push({ idProduto, nome, preco, quantidade: 1 });
+            }
+            atualizarCarrinho();
         }
-    }
-}
 
-function pesquisarClientes() {
-    const input = document.getElementById("pesquisarCliente");
-    const filtro = input.value.toUpperCase();
-    const tabela = document.getElementById("corpoTabelaClientes");
-    const linhas = tabela.getElementsByTagName("tr");
+        function atualizarCarrinho() {
+            const listaCarrinho = document.getElementById('listaCarrinho');
+            const totalCarrinho = document.getElementById('totalCarrinho');
 
-    for (let i = 0; i < linhas.length; i++) {
-        const colunaNome = linhas[i].getElementsByTagName("td")[0];
-        if (colunaNome) {
-            const textoNome = colunaNome.textContent || colunaNome.innerText;
-            linhas[i].style.display = textoNome.toUpperCase().indexOf(filtro) > -1 ? "" : "none";
-        }
-    }
-}
+            listaCarrinho.innerHTML = '';
+            let total = 0;
 
+            carrinho.forEach((item, index) => {
+                const listItem = document.createElement('li');
+                listItem.textContent = `${item.nome}, ${item.quantidade} unidade${item.quantidade > 1 ? 's' : ''}, R$${(item.preco * item.quantidade).toFixed(2).replace('.', ',')}`;
 
+                const botaoRemover = document.createElement('button');
+                botaoRemover.textContent = 'Remover';
+                botaoRemover.onclick = () => removerDoCarrinho(index);
+                listItem.appendChild(botaoRemover);
 
-
-window.onload = async function () {
-    try {
-        let token = localStorage.getItem('token')
-        const response = await fetch('http://localhost:4040/produtos',{headers:{'authorization':'bearer ' + token}});
-        const data = await response.json();
-
-        if (data.success ) {
-            const corpoTabela = document.getElementById('corpoTabelaProdutos');
-            corpoTabela.innerHTML = '';
-
-            data.values.forEach(produto => {
-                const linha = document.createElement('tr');
-
-                const colunaNome = document.createElement('td');
-                colunaNome.textContent = produto.descricao;
-
-                const colunaPreco = document.createElement('td');
-                const preco = parseFloat(produto.valorUnitario);
-                colunaPreco.textContent = `R$${preco.toFixed(2).replace('.', ',')}`;
-
-                const colunaAcao = document.createElement('td');
-                const botao = document.createElement('button');
-                botao.textContent = 'Adicionar';
-                botao.onclick = () => adicionarAoCarrinho(produto.idProduto, produto.descricao, preco);
-
-                colunaAcao.appendChild(botao);
-
-                linha.appendChild(colunaNome);
-                linha.appendChild(colunaPreco);
-                linha.appendChild(colunaAcao);
-
-                corpoTabela.appendChild(linha);
+                listaCarrinho.appendChild(listItem);
+                total += item.preco * item.quantidade;
             });
-        } else {
-            console.error('Erro ao buscar produtos:', data.message);
+
+            totalCarrinho.textContent = total.toFixed(2).replace('.', ',');
         }
-    } catch (error) {
-        console.error('Erro de rede ao buscar produtos:', error);
-    }
-};
 
-async function criarPedido() {
-    let token = localStorage.getItem('token')
-    const pedido = {
-        status: 'Pendente',
-        data: new Date().toISOString(),
-        idUsuario: 1,
-        idCliente: 123, // Substitua por um ID real
-        itens: carrinho.map(item => ({
-            idProduto: item.idProduto,
-            quantidade: item.quantidade,
-            valorCombinado: item.preco * item.quantidade
-        }))
-    };
-
-    try {
-        const response = await fetch('http://localhost:4040/pedidos', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json', 'authorization':'bearer ' + token },
-            body: JSON.stringify(pedido)
-        });
-
-        const data = await response.json();
-
-        if (data.success) {
-            alert('Pedido criado com sucesso! ID do Pedido: ' + data.idPedido);
-        } else {
-            console.error('Erro na resposta do servidor:', data);
-            alert('Erro ao criar o pedido:\n' + JSON.stringify(data, null, 2));
+        function removerDoCarrinho(index) {
+            carrinho.splice(index, 1);
+            atualizarCarrinho();
         }
-    } catch (error) {
-        console.error('Erro de rede:', error);
-        alert('Erro de rede: ' + error.message);
-    }
-}
 
+        function pesquisarProdutos() {
+            const input = document.getElementById("pesquisarProduto");
+            const filtro = input.value.toUpperCase();
+            const tabela = document.querySelector("#corpoTabelaProdutos").parentNode.querySelector("table");
+            const linhas = tabela.getElementsByTagName("tr");
+
+            for (let i = 1; i < linhas.length; i++) {
+                const colunaNome = linhas[i].getElementsByTagName("td")[0];
+                if (colunaNome) {
+                    const textoNome = colunaNome.textContent || colunaNome.innerText;
+                    linhas[i].style.display = textoNome.toUpperCase().indexOf(filtro) > -1 ? "" : "none";
+                }
+            }
+        }
+
+        function pesquisarClientes() {
+            const input = document.getElementById("pesquisarCliente");
+            const filtro = input.value.toUpperCase();
+            const tabela = document.getElementById("corpoTabelaClientes");
+            const linhas = tabela.getElementsByTagName("tr");
+
+            for (let i = 0; i < linhas.length; i++) {
+                const colunaNome = linhas[i].getElementsByTagName("td")[0];
+                if (colunaNome) {
+                    const textoNome = colunaNome.textContent || colunaNome.innerText;
+                    linhas[i].style.display = textoNome.toUpperCase().indexOf(filtro) > -1 ? "" : "none";
+                }
+            }
+        }
+
+        function selecionarCliente(idCliente) {
+            clienteSelecionado = idCliente;
+            console.log('Cliente selecionado:', clienteSelecionado);
+        }
+
+        async function carregarProdutos() {
+            try {
+                let token = localStorage.getItem('token');
+                const response = await fetch('http://localhost:4040/produtos', {
+                    headers: { 'authorization': 'bearer ' + token }
+                });
+                const data = await response.json();
+
+                if (data.success) {
+                    const corpoTabela = document.getElementById('corpoTabelaProdutos');
+                    corpoTabela.innerHTML = '';
+
+                    data.values.forEach(produto => {
+                        const linha = document.createElement('tr');
+
+                        const colunaNome = document.createElement('td');
+                        colunaNome.textContent = produto.descricao;
+
+                        const colunaPreco = document.createElement('td');
+                        const preco = parseFloat(produto.valorUnitario);
+                        colunaPreco.textContent = `R$${preco.toFixed(2).replace('.', ',')}`;
+
+                        const colunaAcao = document.createElement('td');
+                        const botao = document.createElement('button');
+                        botao.textContent = 'Adicionar';
+                        botao.onclick = () => adicionarAoCarrinho(produto.idProduto, produto.descricao, preco);
+                        colunaAcao.appendChild(botao);
+
+                        linha.appendChild(colunaNome);
+                        linha.appendChild(colunaPreco);
+                        linha.appendChild(colunaAcao);
+
+                        corpoTabela.appendChild(linha);
+                    });
+                } else {
+                    console.error('Erro ao buscar produtos:', data.message);
+                }
+            } catch (error) {
+                console.error('Erro de rede ao buscar produtos:', error);
+            }
+        }
+
+        async function carregarClientes() {
+            try {
+                let token = localStorage.getItem('token');
+                const response = await fetch('http://localhost:4040/clientes', {
+                    headers: { 'authorization': 'bearer ' + token }
+                });
+                const data = await response.json();
+
+                if (data.success) {
+                    const corpoTabela = document.getElementById('corpoTabelaClientes');
+                    corpoTabela.innerHTML = '';
+
+                    data.values.forEach(cliente => {
+                        const linha = document.createElement('tr');
+
+                        const colunaNome = document.createElement('td');
+                        colunaNome.textContent = cliente.nome;
+
+                        const colunaCNPJ = document.createElement('td');
+                        colunaCNPJ.textContent = cliente.cnpj;
+
+                        const colunaCEP = document.createElement('td');
+                        colunaCEP.textContent = cliente.cep;
+
+                        const colunaTelefone = document.createElement('td');
+                        colunaTelefone.textContent = cliente.telefone;
+
+                        const colunaAcao = document.createElement('td');
+                        const botao = document.createElement('button');
+                        botao.textContent = 'Selecionar';
+                        botao.onclick = () => selecionarCliente(cliente.idCliente);
+                        colunaAcao.appendChild(botao);
+
+                        linha.appendChild(colunaNome);
+                        linha.appendChild(colunaCNPJ);
+                        linha.appendChild(colunaCEP);
+                        linha.appendChild(colunaTelefone);
+                        linha.appendChild(colunaAcao);
+
+                        corpoTabela.appendChild(linha);
+                    });
+                } else {
+                    console.error('Erro ao buscar clientes:', data.message);
+                }
+            } catch (error) {
+                console.error('Erro de rede ao buscar clientes:', error);
+            }
+        }
+
+        async function criarPedido() {
+            if (!clienteSelecionado) {
+                alert('Selecione um cliente antes de criar o pedido.');
+                return;
+            }
+
+            let token = localStorage.getItem('token');
+            const pedido = {
+                status: 'Pendente',
+                data: new Date().toISOString(),
+                idUsuario: 1,
+                idCliente: clienteSelecionado,
+                itens: carrinho.map(item => ({
+                    idProduto: item.idProduto,
+                    quantidade: item.quantidade,
+                    valorCombinado: item.preco * item.quantidade
+                }))
+            };
+
+            try {
+                const response = await fetch('http://localhost:4040/pedidos', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'authorization': 'bearer ' + token
+                    },
+                    body: JSON.stringify(pedido)
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    alert('Pedido criado com sucesso! ID do Pedido: ' + data.idPedido);
+                    carrinho = [];
+                    atualizarCarrinho();
+                } else {
+                    alert('Erro ao criar o pedido:\n' + JSON.stringify(data, null, 2));
+                }
+            } catch (error) {
+                alert('Erro de rede: ' + error.message);
+            }
+        }
+
+        window.onload = async function () {
+            await carregarProdutos();
+            await carregarClientes();
+        };
     </script>
 </body>
 </html>
+
 
