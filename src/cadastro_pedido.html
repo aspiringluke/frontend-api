@@ -31,24 +31,24 @@
                    
 
     <div class="containerTabela">
-                    <h2>Tabela de Clients</h2>
-                    <input type="text" id="pesquisar" onkeyup="pesquisarClientes()" placeholder="Pesquisar por nome...">
-                    <div class="tabela-rolavel">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>Nome</th>
-                                    <th>CNPJ</th>
-                                    <th>endereço</tr>
-                                    <th>Telefone</th>
-                                    <th>Adicionar Ao Carrinho</th>
-                                </tr>
-                            </thead>
-                            <tbody id="corpoTabela">
-                                <!-- Produtos serão inseridos aqui -->
-                            </tbody>
-                        </table>
-                    </div>
+                <h2>Tabela de Clientes</h2>
+                <input type="text" id="pesquisarCliente" onkeyup="pesquisarClientes()" placeholder="Pesquisar por nome...">
+                <div class="tabela-rolavel">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Nome</th>
+                                <th>CNPJ</th>
+                                <th>CEP</th>
+                                <th>Telefone</th>
+                                <th>Adicionar Ao Carrinho</th>
+                            </tr>
+                        </thead>
+                        <tbody id="corpoTabelaClientes">
+                            <!-- Clientes serão inseridos aqui via JS -->
+                        </tbody>
+                    </table>
+                </div>             
 
 
 
@@ -145,6 +145,24 @@ function pesquisarProdutos() {
         }
     }
 }
+
+function pesquisarClientes() {
+    const input = document.getElementById("pesquisarCliente");
+    const filtro = input.value.toUpperCase();
+    const tabela = document.getElementById("corpoTabelaClientes");
+    const linhas = tabela.getElementsByTagName("tr");
+
+    for (let i = 0; i < linhas.length; i++) {
+        const colunaNome = linhas[i].getElementsByTagName("td")[0];
+        if (colunaNome) {
+            const textoNome = colunaNome.textContent || colunaNome.innerText;
+            linhas[i].style.display = textoNome.toUpperCase().indexOf(filtro) > -1 ? "" : "none";
+        }
+    }
+}
+
+
+
 
 window.onload = async function () {
     try {
