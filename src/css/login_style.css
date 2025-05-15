@@ -7,7 +7,7 @@ body, html {
     align-items: center;
     flex-direction: column;
     background-color: #f4f4f4; /* Fallback para quando a imagem não carregar */
-    background-image: url('https://www.transparenttextures.com/patterns/elastoplast.png');
+    background-image: url('https://www.transparenttextures.com/patterns/checkered-pattern.png');
     background-repeat: repeat;
     background-size: auto;
     background-position: top left;
