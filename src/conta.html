@@ -1,53 +1,85 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projeto Integrado</title>
-    <link rel="stylesheet" href="css/index_style.css">
-    <link rel="stylesheet" href="css/conta_style.css">
+  <meta charset="UTF-8">
+  <title>Perfil do Usuário</title>
+<link rel="stylesheet" href="./css/index_style.css">
+
+<link rel="stylesheet" href="./css/conta_style.css">
 </head>
 <body>
-    <header class="banner">
-      <div class="logo-container">
+  <header class="banner">
+    <div class="logo-container">
         <img src="https://www.argenzio.com.br/img/Logo_Argenzio.png" alt="Logo Argenzio">
     </div>
-    </header> 
-    <nav class="menu">
-        <ul>
-            <li><a href="./index_ven.html">MENU VEN</a></li>
-            <li><a href="./index_adm.html">MENU ADM</a></li>
-            <li><a href="./ajuda.html">AJUDA</a></li>
-            <li><a href="#">CONTATO</a></li>
-        </ul>
-    </nav>
-    <main class="conteudo">
-      <h1>Conta do Usuário</h1>
+  </header>
 
-        <section>
-          <h2>Informações Pessoais</h2>
-          <p><strong>Nome:</strong> João da Silva</p>
-          <p><strong>Email:</strong> joao@email.com</p>
-          <p><strong>Data de nascimento:</strong> 01/01/2000</p>
-        </section>
-      
-        <section>
-          <h2>Endereço</h2>
-          <p><strong>Cidade:</strong> São Paulo</p>
-          <p><strong>Estado:</strong> SP</p>
-          <p><strong>CEP:</strong> 01000-000</p>
-        </section>
-      
+  <nav class="menu">
+      <ul>
+          <li><a href="./conta.html">CONTA</a></li>
+      </ul>
+  </nav>
 
-      
-        <section>
-          <h2>Ações</h2>
-          <button>Editar Perfil</button>
-          <button>Sair da Conta</button>
-        </section></main>
-    <footer class="rodape">
-        Projeto Integrado 2025.1
-        Grupo 5, UNIFEOB
-    </footer>
+  <main class="conteudo">
+  <div class="container">
+
+    <section id="info-pessoal">
+      <h2>Informações Pessoais</h2>
+      <p><strong>Nome:</strong> <span id="nome">Carregando...</span></p>
+      <p><strong>Email:</strong> <span id="email">Carregando...</span></p>
+    </section>
+
+    <section>
+      <h2>Ações</h2>
+      <button onclick="atualizarPerfil()">Atualizar Perfil</button>
+    </section>
+  </div>
+  </main>
+
+  <footer class="rodape">
+        Projeto Integrado 2025.1 - Grupo 5, UNIFEOB
+  </footer>
+  <script>
+
+    const apiUrl = "https://jsonplaceholder.typicode.com/users/1";
+
+    async function carregarPerfil() {
+      try {
+        const response = await fetch(apiUrl);
+        const data = await response.json();
+
+        document.getElementById("nome").textContent = data.name;
+        document.getElementById("email").textContent = data.email;
+      } catch (error) {
+        console.log("Erro ao carregar os dados:", error);
+      }
+    }
+
+    async function atualizarPerfil() {
+      try {
+        const response = await fetch(apiUrl, {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            name: "Novo Nome",
+            email: "novoemail@email.com"
+          })
+        });
+
+        const data = await response.json();
+        console.log("Perfil atualizado:", data);
+
+        document.getElementById("nome").textContent = data.name;
+        document.getElementById("email").textContent = data.email;
+
+      } catch (error) {
+        console.log("Erro ao atualizar o perfil:", error);
+      }
+    }
+
+    carregarPerfil();
+  </script>
 </body>
 </html>

@@ -6,49 +6,55 @@
 */
 
 
-.conteudo {
-    width: 700px;
-    max-width: 1200px;
-    margin: 2rem auto;
-    padding: 2rem;
-    background-color: #f8f8f8;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    margin: 0;
 }
 
-.conteudo h1 {
-    margin-bottom: 1rem;
-    color: #2c3e50;
+.container {
+    max-width: 1000px;
+    background-color: #fff;
+    margin: auto;
+    padding: 50px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+h1 {
     text-align: center;
+    color: #333;
 }
 
-.conteudo section {
-    margin-bottom: 2rem;
+section {
+    margin-bottom: 25px;
 }
 
-.conteudo h2 {
-    color: #34495e;
-    margin-bottom: 0.5rem;
+h2 {
+    color: #555;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 5px;
 }
 
-.conteudo p {
-    margin: 0.3rem 0;
-    font-size: 1rem;
+p {
+    margin: 8px 0;
+    color: #444;
 }
 
-/* Botões */
-.conteudo button {
-    background-color: #3498db;
+strong {
+    color: #000;
+}
+
+button {
+    background-color: #4CAF50;
     color: white;
-    border: none;
-    padding: 0.6rem 1.2rem;
+    padding: 10px 15px;
     margin-right: 10px;
+    border: none;
     border-radius: 5px;
     cursor: pointer;
-    font-weight: bold;
-    transition: background 0.3s;
 }
 
-.conteudo button:hover {
-    background-color: #2980b9;
+button:hover {
+    background-color: #45a049;
 }
