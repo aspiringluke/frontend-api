@@ -22,11 +22,14 @@
             .then(data => {
                 if (data.success) {
                     localStorage.setItem('token', data.token);
+                    localStorage.setItem('id', data.id);
                     
                     if(data.id === 2){
                         window.location.href = './index_ven.html';
+                        return;
                     }else{
                         window.location.href = './index_adm.html';
+                        return;
                     }
                 } else {
                     alert(data.message || 'Erro ao fazer login.');

@@ -20,8 +20,6 @@
         <ul>
             <li><a href="./index_ven.html">HOME</a></li>
             <li><a href="./conta.html">CONTA</a></li>
-            <li><a href="./ajuda.html">AJUDA</a></li>
-            <li><a href="#">CONTATO</a></li>
         </ul>
     </nav>
 
@@ -30,18 +28,32 @@
             <div class="areaDeCadastro">
                 <h1>Cadastrar Pedido</h1>
                 <form onsubmit="event.preventDefault(); criarPedido();" class="formulario-pedido">
-                    <label for="nomeCliente">Nome do Cliente:</label>
-                    <input type="text" id="nomeCliente" name="nomeCliente" required>
+                   
 
-                    <label for="clienteCEP">CEP</label>
-                    <input type="number" id="clienteCEP" name="clienteCEP" required>
+    <div class="containerTabela">
+                    <h2>Tabela de Clients</h2>
+                    <input type="text" id="pesquisar" onkeyup="pesquisarClientes()" placeholder="Pesquisar por nome...">
+                    <div class="tabela-rolavel">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Nome</th>
+                                    <th>CNPJ</th>
+                                    <th>endereço</tr>
+                                    <th>Telefone</th>
+                                    <th>Adicionar Ao Carrinho</th>
+                                </tr>
+                            </thead>
+                            <tbody id="corpoTabela">
+                                <!-- Produtos serão inseridos aqui -->
+                            </tbody>
+                        </table>
+                    </div>
 
-                    <label for="clienteCNPJ">CNPJ</label>
-                    <input type="number" id="clienteCNPJ" name="clienteCNPJ" required>
 
-                    <label for="clienteContato">Forma de Contato</label>
-                    <input type="tel" id="clienteTelefone" name="clienteTelefone" placeholder="telefone" required>
-                    <input type="email" id="clienteEmail" name="clienteEmail" placeholder="email" required>
+
+
+
 
                     <label for="dataPedido">Data</label>
                     <input type="date" id="dataPedido" name="dataPedido" required>
@@ -51,7 +63,7 @@
 
             <div class="containerTabela">
                 <h2>Tabela de Produtos</h2>
-                <input type="text" id="pesquisarProduto" onkeyup="pesquisarProdutos()" placeholder="Pesquisar por nome...">
+                <input type="text" id="pesquisar" onkeyup="pesquisarProdutos()" placeholder="Pesquisar por nome...">
                 <div class="tabela-rolavel">
                     <table>
                         <thead>

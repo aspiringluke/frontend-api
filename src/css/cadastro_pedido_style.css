@@ -147,7 +147,7 @@
 
 body {
     background-color: #f9f9f9; /* Cor de fundo clara */
-    background-image: url('https://www.transparenttextures.com/patterns/elastoplast.png');
+    background-image: url('https://www.transparenttextures.com/patterns/checkered-pattern.png');
     background-repeat: repeat;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
@@ -242,7 +242,7 @@ body {
     margin-bottom: 10px;
 }
 
-#pesquisarProduto {
+#pesquisar {
     width: 100%;
     padding: 10px;
     margin-bottom: 10px;
