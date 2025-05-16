@@ -22,9 +22,10 @@
             .then(data => {
                 if (data.success) {
                     localStorage.setItem('token', data.token);
-                    localStorage.setItem('id', data.id);
+                    localStorage.setItem('funcaoId', data.funcaoId);
+                    localStorage.setItem('userId', data.userId);
                     
-                    if(data.id === 2){
+                    if(data.funcaoId === 2){
                         window.location.href = './index_ven.html';
                         return;
                     }else{

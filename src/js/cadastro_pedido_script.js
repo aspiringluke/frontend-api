@@ -205,7 +205,7 @@ async function criarPedido() {
     }
 
     const token = localStorage.getItem("token");
-    const idusuario = localStorage.getItem("id");
+    const idusuario = localStorage.getItem("userId");
     const pedido = {
         idUsuario: idusuario,
         idCliente: clienteSelecionado,
