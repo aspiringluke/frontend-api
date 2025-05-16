@@ -4,29 +4,18 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Lista de Pedidos</title>
+  <link rel="stylesheet" href="./css/index_style.css">
   <style>
     body {
       font-family: Arial, sans-serif;
-      margin: 0;
-      background-color: #f4f4f4;
     }
 
     header {
-      background-color: #1e2a38;
       color: white;
-      padding: 20px;
-      text-align: center;
-    }
-
-    h1 {
-      margin: 0;
-    }
-
-    main {
-      padding: 20px;
     }
 
     table {
+      margin: 20px;
       width: 100%;
       border-collapse: collapse;
       background-color: white;
@@ -56,11 +45,11 @@
 </head>
 <body>
 
-  <header>
+  <header class="banner">
     <h1>Painel de Pedidos</h1>
   </header>
 
-  <main>
+  <main class="conteudo">
     <table id="tabelaPedidos">
       <thead>
         <tr>
@@ -76,12 +65,16 @@
     <p class="erro" id="mensagemErro"></p>
   </main>
 
+  <footer class="rodape">
+      Projeto Integrado 2025.1 - Grupo 5, UNIFEOB
+  </footer>
   <script>
     async function carregarPedidos() {
       try {
         let token = localStorage.getItem('token');
         const response = await fetch('http://localhost:4040/pedidos', {
           headers: {
+            "Content-Type": "application/json",
             'authorization': 'bearer ' + token
           }
         });
@@ -120,7 +113,7 @@
       }
     }
 
-    window.onload = carregarPedidos;
+    carregarPedidos();
   </script>
 
 </body>
