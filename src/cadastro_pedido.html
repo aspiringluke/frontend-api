@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Cadastrar Pedido</title>
-    <link rel="stylesheet" href="css/cadastro_pedido_style.css">
+    <link rel="stylesheet" href="css/cadastro_pedido_style.css" />
 </head>
 <body>
     <header class="banner">
         <div class="logo-container">
-            <img src="https://www.argenzio.com.br/img/Logo_Argenzio.png" alt="Logo Argenzio">
+            <img src="https://www.argenzio.com.br/img/Logo_Argenzio.png" alt="Logo Argenzio" />
         </div>
     </header>
 
@@ -27,7 +27,12 @@
                 <form onsubmit="event.preventDefault(); criarPedido();" class="formulario-pedido">
                     <div class="containerTabela">
                         <h2>Tabela de Clientes</h2>
-                        <input type="text" id="pesquisarCliente" onkeyup="pesquisarClientes()" placeholder="Pesquisar por nome...">
+                        <input
+                            type="text"
+                            id="pesquisarCliente"
+                            onkeyup="pesquisarClientes()"
+                            placeholder="Pesquisar por nome..."
+                        />
                         <div class="tabela-rolavel">
                             <table>
                                 <thead>
@@ -39,21 +44,25 @@
                                         <th>Adicionar Cliente</th>
                                     </tr>
                                 </thead>
-                                <tbody id="corpoTabelaClientes">
-                                </tbody>
+                                <tbody id="corpoTabelaClientes"></tbody>
                             </table>
                         </div>
                     </div>
 
                     <label for="dataPedido">Data</label>
-                    <input type="date" id="dataPedido" name="dataPedido" required>
+                    <input type="date" id="dataPedido" name="dataPedido" required />
                     <button type="submit">Cadastrar pedido</button>
                 </form>
             </div>
 
             <div class="containerTabela">
                 <h2>Tabela de Produtos</h2>
-                <input type="text" id="pesquisarProduto" onkeyup="pesquisarProdutos()" placeholder="Pesquisar por nome...">
+                <input
+                    type="text"
+                    id="pesquisarProduto"
+                    onkeyup="pesquisarProdutos()"
+                    placeholder="Pesquisar por nome..."
+                />
                 <div class="tabela-rolavel">
                     <table>
                         <thead>
@@ -63,14 +72,14 @@
                                 <th>Adicionar Ao Carrinho</th>
                             </tr>
                         </thead>
-                        <tbody id="corpoTabelaProdutos">
-                        </tbody>
+                        <tbody id="corpoTabelaProdutos"></tbody>
                     </table>
                 </div>
+
                 <div class="carrinho-produtos">
                     <h2>Carrinho de Produtos</h2>
                     <ul id="listaCarrinho"></ul>
-                    <p>Total: R$ <span id="totalCarrinho">0,00</span></p>
+                    <p>Total: <span id="totalCarrinho">R$ 0,00</span></p>
                 </div>
             </div>
         </div>
@@ -81,7 +90,7 @@
         let clienteSelecionado = null;
 
         function adicionarAoCarrinho(idProduto, nome, preco) {
-            const itemNoCarrinho = carrinho.find(item => item.idProduto === idProduto);
+            const itemNoCarrinho = carrinho.find((item) => item.idProduto === idProduto);
             if (itemNoCarrinho) {
                 itemNoCarrinho.quantidade++;
             } else {
@@ -91,18 +100,22 @@
         }
 
         function atualizarCarrinho() {
-            const listaCarrinho = document.getElementById('listaCarrinho');
-            const totalCarrinho = document.getElementById('totalCarrinho');
-
-            listaCarrinho.innerHTML = '';
+            const listaCarrinho = document.getElementById("listaCarrinho");
+            const totalCarrinho = document.getElementById("totalCarrinho");
+            listaCarrinho.innerHTML = "";
             let total = 0;
 
             carrinho.forEach((item, index) => {
-                const listItem = document.createElement('li');
-                listItem.textContent = `${item.nome}, ${item.quantidade} unidade${item.quantidade > 1 ? 's' : ''}, R$${(item.preco * item.quantidade).toFixed(2).replace('.', ',')}`;
+                const listItem = document.createElement("li");
+                listItem.textContent = `${item.nome}, ${item.quantidade} unidade${
+                    item.quantidade > 1 ? "s" : ""
+                }, ${item.preco.toLocaleString("pt-BR", {
+                    style: "currency",
+                    currency: "BRL",
+                })}`;
 
-                const botaoRemover = document.createElement('button');
-                botaoRemover.textContent = 'Remover';
+                const botaoRemover = document.createElement("button");
+                botaoRemover.textContent = "Remover";
                 botaoRemover.onclick = () => removerDoCarrinho(index);
                 listItem.appendChild(botaoRemover);
 
@@ -110,7 +123,10 @@
                 total += item.preco * item.quantidade;
             });
 
-            totalCarrinho.textContent = total.toFixed(2).replace('.', ',');
+            totalCarrinho.textContent = total.toLocaleString("pt-BR", {
+                style: "currency",
+                currency: "BRL",
+            });
         }
 
         function removerDoCarrinho(index) {
@@ -119,180 +135,197 @@
         }
 
         function pesquisarProdutos() {
-            const input = document.getElementById("pesquisarProduto");
-            const filtro = input.value.toUpperCase();
-            const tabela = document.querySelector("#corpoTabelaProdutos").parentNode.querySelector("table");
-            const linhas = tabela.getElementsByTagName("tr");
+            const filtro = document.getElementById("pesquisarProduto").value.toUpperCase();
+            const linhas = document
+                .getElementById("corpoTabelaProdutos")
+                .getElementsByTagName("tr");
 
-            for (let i = 1; i < linhas.length; i++) {
-                const colunaNome = linhas[i].getElementsByTagName("td")[0];
-                if (colunaNome) {
-                    const textoNome = colunaNome.textContent || colunaNome.innerText;
-                    linhas[i].style.display = textoNome.toUpperCase().indexOf(filtro) > -1 ? "" : "none";
+            for (let i = 0; i < linhas.length; i++) {
+                const nomeProduto = linhas[i].getElementsByTagName("td")[0];
+                if (nomeProduto) {
+                    const texto = nomeProduto.textContent || nomeProduto.innerText;
+                    linhas[i].style.display = texto.toUpperCase().indexOf(filtro) > -1 ? "" : "none";
                 }
             }
         }
 
         function pesquisarClientes() {
-            const input = document.getElementById("pesquisarCliente");
-            const filtro = input.value.toUpperCase();
-            const tabela = document.getElementById("corpoTabelaClientes");
-            const linhas = tabela.getElementsByTagName("tr");
+            const filtro = document.getElementById("pesquisarCliente").value.toUpperCase();
+            const linhas = document
+                .getElementById("corpoTabelaClientes")
+                .getElementsByTagName("tr");
 
             for (let i = 0; i < linhas.length; i++) {
-                const colunaNome = linhas[i].getElementsByTagName("td")[0];
-                if (colunaNome) {
-                    const textoNome = colunaNome.textContent || colunaNome.innerText;
-                    linhas[i].style.display = textoNome.toUpperCase().indexOf(filtro) > -1 ? "" : "none";
+                const nomeCliente = linhas[i].getElementsByTagName("td")[0];
+                if (nomeCliente) {
+                    const texto = nomeCliente.textContent || nomeCliente.innerText;
+                    linhas[i].style.display = texto.toUpperCase().indexOf(filtro) > -1 ? "" : "none";
                 }
             }
         }
 
-        function selecionarCliente(idCliente) {
+        function selecionarCliente(idCliente, event) {
             clienteSelecionado = idCliente;
-            console.log('Cliente selecionado:', clienteSelecionado);
+            const nome = event.target.parentNode.parentNode.querySelector('td').textContent;
+            alert(`Cliente selecionado: ${nome}`);
         }
 
         async function carregarProdutos() {
             try {
-                let token = localStorage.getItem('token');
-                const response = await fetch('http://localhost:4040/produtos', {
-                    headers: { 'authorization': 'bearer ' + token }
+                let token = localStorage.getItem("token");
+                const response = await fetch("http://localhost:4040/produtos", {
+                    headers: { authorization: "bearer " + token },
                 });
                 const data = await response.json();
 
                 if (data.success) {
-                    const corpoTabela = document.getElementById('corpoTabelaProdutos');
-                    corpoTabela.innerHTML = '';
+                    const corpoTabela = document.getElementById("corpoTabelaProdutos");
+                    corpoTabela.innerHTML = "";
 
-                    data.values.forEach(produto => {
-                        const linha = document.createElement('tr');
+                    data.values.forEach((produto) => {
+                        const linha = document.createElement("tr");
 
-                        const colunaNome = document.createElement('td');
-                        colunaNome.textContent = produto.descricao;
+                        const tdNome = document.createElement("td");
+                        tdNome.textContent = produto.descricao;
 
-                        const colunaPreco = document.createElement('td');
+                        const tdPreco = document.createElement("td");
                         const preco = parseFloat(produto.valorUnitario);
-                        colunaPreco.textContent = `R$${preco.toFixed(2).replace('.', ',')}`;
+                        tdPreco.textContent = preco.toLocaleString("pt-BR", {
+                            style: "currency",
+                            currency: "BRL",
+                        });
 
-                        const colunaAcao = document.createElement('td');
-                        const botao = document.createElement('button');
-                        botao.textContent = 'Adicionar';
+                        const tdAcao = document.createElement("td");
+                        const botao = document.createElement("button");
+                        botao.textContent = "Adicionar";
+                        botao.title = `Adicionar ${produto.descricao} ao carrinho`;
                         botao.onclick = () => adicionarAoCarrinho(produto.idProduto, produto.descricao, preco);
-                        colunaAcao.appendChild(botao);
+                        tdAcao.appendChild(botao);
 
-                        linha.appendChild(colunaNome);
-                        linha.appendChild(colunaPreco);
-                        linha.appendChild(colunaAcao);
-
+                        linha.appendChild(tdNome);
+                        linha.appendChild(tdPreco);
+                        linha.appendChild(tdAcao);
                         corpoTabela.appendChild(linha);
                     });
                 } else {
-                    console.error('Erro ao buscar produtos:', data.message);
+                    console.error("Erro ao buscar produtos:", data.message);
                 }
             } catch (error) {
-                console.error('Erro de rede ao buscar produtos:', error);
+                console.error("Erro de rede ao buscar produtos:", error);
             }
         }
 
         async function carregarClientes() {
             try {
-                let token = localStorage.getItem('token');
-                const response = await fetch('http://localhost:4040/clientes', {
-                    headers: { 'authorization': 'bearer ' + token }
+                let token = localStorage.getItem("token");
+                const response = await fetch("http://localhost:4040/clientes", {
+                    headers: { authorization: "bearer " + token },
                 });
                 const data = await response.json();
 
                 if (data.success) {
-                    const corpoTabela = document.getElementById('corpoTabelaClientes');
-                    corpoTabela.innerHTML = '';
+                    const corpoTabela = document.getElementById("corpoTabelaClientes");
+                    corpoTabela.innerHTML = "";
 
-                    data.values.forEach(cliente => {
-                        const linha = document.createElement('tr');
+                    data.values.forEach((cliente) => {
+                        const linha = document.createElement("tr");
 
-                        const colunaNome = document.createElement('td');
-                        colunaNome.textContent = cliente.nome;
+                        const tdNome = document.createElement("td");
+                        tdNome.textContent = cliente.nome;
 
-                        const colunaCNPJ = document.createElement('td');
-                        colunaCNPJ.textContent = cliente.CNPJ;
+                        const tdCNPJ = document.createElement("td");
+                        tdCNPJ.textContent = cliente.CNPJ;
 
-                        const colunaCEP = document.createElement('td');
-                        colunaCEP.textContent = cliente.CEP;
+                        const tdCEP = document.createElement("td");
+                        tdCEP.textContent = cliente.CEP;
 
-                        const colunaTelefone = document.createElement('td');
-                        colunaTelefone.textContent = cliente.telefone;
+                        const tdTelefone = document.createElement("td");
+                        tdTelefone.textContent = cliente.telefone;
 
-                        const colunaAcao = document.createElement('td');
-                        const botao = document.createElement('button');
-                        botao.textContent = 'Selecionar';
-                        botao.onclick = () => selecionarCliente(cliente.idCliente);
-                        colunaAcao.appendChild(botao);
+                        const tdAcao = document.createElement("td");
+                        const botao = document.createElement("button");
+                        botao.textContent = "Selecionar";
+                        botao.onclick = (event) => selecionarCliente(cliente.idCliente, event);
+                        // Removido o segundo botao.onclick que sobrescrevia o primeiro
+                        tdAcao.appendChild(botao);
 
-                        linha.appendChild(colunaNome);
-                        linha.appendChild(colunaCNPJ);
-                        linha.appendChild(colunaCEP);
-                        linha.appendChild(colunaTelefone);
-                        linha.appendChild(colunaAcao);
-
+                        linha.appendChild(tdNome);
+                        linha.appendChild(tdCNPJ);
+                        linha.appendChild(tdCEP);
+                        linha.appendChild(tdTelefone);
+                        linha.appendChild(tdAcao);
                         corpoTabela.appendChild(linha);
                     });
                 } else {
-                    console.error('Erro ao buscar clientes:', data.message);
+                    console.error("Erro ao buscar clientes:", data.message);
                 }
             } catch (error) {
-                console.error('Erro de rede ao buscar clientes:', error);
+                console.error("Erro de rede ao buscar clientes:", error);
             }
         }
 
         async function criarPedido() {
             if (!clienteSelecionado) {
-                alert('Selecione um cliente antes de criar o pedido.');
+                alert("Selecione um cliente antes de criar o pedido.");
                 return;
             }
 
-            let token = localStorage.getItem('token');
+            if (carrinho.length === 0) {
+                alert("Adicione pelo menos um produto ao carrinho.");
+                return;
+            }
+
+            const dataSelecionada = document.getElementById("dataPedido").value;
+            if (!dataSelecionada) {
+                alert("Por favor, selecione uma data.");
+                return;
+            }
+
+            let token = localStorage.getItem("token");
+
             const pedido = {
-                status: 'Pendente',
-                data: new Date().toISOString(),
-                idUsuario: 1,
                 idCliente: clienteSelecionado,
-                itens: carrinho.map(item => ({
-                    idProduto: item.idProduto,
-                    quantidade: item.quantidade,
-                    valorCombinado: item.preco * item.quantidade
-                }))
+                dataPedido: dataSelecionada,
+                items: carrinho.map(({ idProduto, quantidade }) => ({
+                    idProduto,
+                    quantidade,
+                })),
             };
 
             try {
-                const response = await fetch('http://localhost:4040/pedidos', {
-                    method: 'POST',
+                const response = await fetch("http://localhost:4040/pedidos", {
+                    method: "POST",
                     headers: {
-                        'Content-Type': 'application/json',
-                        'authorization': 'bearer ' + token
+                        "Content-Type": "application/json",
+                        Authorization: "Bearer " + token,
                     },
-                    body: JSON.stringify(pedido)
+                    body: JSON.stringify(pedido),
                 });
-
                 const data = await response.json();
 
                 if (data.success) {
-                    alert('Pedido criado com sucesso! ID do Pedido: ' + data.idPedido);
+                    alert("Pedido criado com sucesso!");
+                    clienteSelecionado = null;
                     carrinho = [];
                     atualizarCarrinho();
+                    carregarClientes();
+                    carregarProdutos();
+                    document.getElementById("dataPedido").value = "";
                 } else {
-                    alert('Erro ao criar o pedido:\n' + JSON.stringify(data, null, 2));
+                    alert("Erro ao criar pedido: " + data.message);
                 }
             } catch (error) {
-                alert('Erro de rede: ' + error.message);
+                alert("Erro ao criar pedido: " + error.message);
             }
         }
 
-        window.onload = async function () {
-            await carregarProdutos();
-            await carregarClientes();
-        };
+        carregarProdutos();
+        carregarClientes();
     </script>
 </body>
 </html>
+
+
+
 
 
