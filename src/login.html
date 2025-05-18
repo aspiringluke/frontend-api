@@ -5,49 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/login_style.css">
     <title>Login</title>
-
-    <script>
-        function fazerLogin() {
-            const email = document.getElementById('email').value;
-            const senha = document.getElementById('psw').value;
-            
-            fetch('http://localhost:4040/login', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ email, senha })
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    localStorage.setItem('token', data.token);
-                    localStorage.setItem('funcaoId', data.funcaoId);
-                    localStorage.setItem('userId', data.userId);
-                    
-                    if(data.funcaoId === 2){
-                        window.location.href = './index_ven.html';
-                        return;
-                    }else{
-                        window.location.href = './index_adm.html';
-                        return;
-                    }
-                } else {
-                    alert(data.message || 'Erro ao fazer login.');
-                }
-            })
-            .catch(error => {
-                console.error(err);
-                alert('Erro de conexão com o servidor.');
-            });
-        }
-    </script>
 </head>
 <body>
     <div id="logo-container">
         <img src="https://www.argenzio.com.br/img/Logo_Argenzio.png" alt="Logo Argenzio" id="logo">
     </div>
-
+    
     <div id="box1">
         <p id="p1">Logar </p>
         <form class="login">
@@ -58,6 +21,8 @@
             <input type="button" value="Entrar" onclick="fazerLogin()"> 
         </form>
     </div>
+
+    <script src="./js/login_script.js"></script>
 </body>
 </html>
 
