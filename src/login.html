@@ -3,40 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/login_style.css">
     <title>Login</title>
-    <style>
-        .container{
-            position: absolute; /* absolute para a página, relative para outra div*/
-            left: 50%;
-            top: 30%;
-            transform: translateX(-50%);
-        }
-
-        h1{
-            text-align: center;
-        }
-
-        #submit{
-            position: relative;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-    </style>
 </head>
 <body>
-    <div class="container">
-        <h1>LOGIN</h1>
-        <form>
-            <label for="uemail">Digite se email: </label>
-            <br>
-            <input type="email" id="uemail" placeholder="abc@defg.com">
-            <br><br>
-            <label for="upwd">Digite sua senha: </label>
-            <br>
-            <input type="password" id="upwd" placeholder="*****">
-            <br><br>
-            <input type="Submit" id="submit">
+    <div id="logo-container">
+        <img src="https://www.argenzio.com.br/img/Logo_Argenzio.png" alt="Logo Argenzio" id="logo">
+    </div>
+    
+    <div id="box1">
+        <p id="p1">Logar </p>
+        <form class="login">
+            <label for="login">Email</label><br>
+            <input type="text" name="email" id="email"><br>
+            <label for="senha">Senha</label><br>
+            <input type="password" name="psw" id="psw"><br><br>
+            <input type="button" value="Entrar" onclick="fazerLogin()"> 
         </form>
     </div>
+
+    <script src="./js/login_script.js"></script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -5,11 +5,11 @@
 }
 
 body{
-    background-image: url('https://i.pinimg.com/236x/6e/ee/d4/6eeed4da8a937b4c434a542e2c9994f5.jpg');
+    background-image: url('https://www.transparenttextures.com/patterns/checkered-pattern.png');
     background-repeat: repeat;
     background-size: auto; /* ou 100px 100px para ajustar o tamanho do padrão */
     background-position: top left;
-    background-size: 150px 150px;
+
 }
 html, body{
     height: 100%;
@@ -40,25 +40,45 @@ html, body{
  * |================|
 */
 
+/* Menu de navegação principal */
 .menu {
-    background-color: rgba(250,50,10,0.4);
-    padding: 20px;
-    font-family:Verdana, Geneva, Tahoma, sans-serif ;
+    width: 100%;
+    background-color: #fac228; /* Cor principal do menu */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+/* Lista do menu */
 .menu ul {
-   list-style: none;
-   text-align: center; 
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center; /* Centraliza os itens */
+    flex-wrap: wrap; /* Quebra em telas pequenas */
 }
 
+/* Itens do menu */
 .menu ul li {
-    display: inline;
     margin: 0 15px;
 }
 
+/* Links do menu */
 .menu ul li a {
-    color: black;
+    display: block;
+    padding: 15px 20px;
+    color: rgb(231, 62, 62);
     text-decoration: none;
+    font-weight: 500;
+    font-size: 16px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    border-radius: 6px;
+}
+
+/* Efeito hover */
+.menu ul li a:hover {
+    background-color: #e63f3f;
+    color: #f1f1f1;
 }
 
 .logo-container {
@@ -99,8 +119,8 @@ html, body{
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 720px;
-    height: 440px;
+    width: 550px;
+    height: 325px;
     padding: 30px 30px;
     border: 2px solid #D32F2F;
     border-radius: 12px;
@@ -149,11 +169,18 @@ html, body{
 
 @media (max-width: 600px) {
     .menuButton {
-        width: 100%;
+        transform: scale(0.7);
+        width: 80%;
+        height: 60%;
     }
 
     .menu ul {
         flex-direction: column;
         align-items: center;
+    }
+
+    .containerMenu{
+        padding: 5px 5px;
+        gap: 5px;
     }
 }

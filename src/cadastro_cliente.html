@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro de Usuário</title>
+    <title>Cadastro de Cliente</title>
     <link rel="stylesheet" href="css/index_style.css">
-    <link rel="stylesheet" href="css/cadastro_usuario_style.css">
+    <link rel="stylesheet" href="css/cadastro_clientes_style.css">
 </head>
 <body>
     <header class="banner">
@@ -24,26 +24,23 @@
     <main class="conteudo">
         <div class="areaDeCadastro">
             <div class="containerForm">
-                <form id="cadastroUsuario">
-                    <h2 class="formTitle">Cadastro de Usuário</h2>
+                <form id="cadastroCliente">
+                    <h2 class="formTitle">Cadastro de Cliente</h2>
 
                     <label for="nome">Nome</label>
                     <input type="text" id="nome" name="nome" required>
 
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" required>
+                    <label for="cep">CEP</label>
+                    <input type="text" id="cep" name="cep" required pattern="\d{5}-?\d{3}" placeholder="Ex: 12345-678">
 
-                    <label for="senha">Senha</label>
-                    <input type="password" id="senha" name="senha" required>
+                    <label for="cnpj">CNPJ</label>
+                    <input type="text" id="cnpj" name="cnpj" required placeholder="Ex: 12.345.678/0001-90">
 
-                    <fieldset class="radioGroup">
-                        <legend>Função</legend>
-                        <label><input type="radio" name="funcao" value="1" required> Administrador</label>
-                        <label><input type="radio" name="funcao" value="2"> Vendedor</label>
-                    </fieldset>
+                    <label for="telefone">Telefone</label>
+                    <input type="text" id="telefone" name="telefone" required placeholder="Ex: (11) 91234-5678">
 
                     <div class="botaoContainer">
-                        <button type="submit" class="btnSubmit">Cadastrar</button>
+                        <button type="submit" id="submitBtn" class="btnSubmit">Cadastrar</button>
                     </div>
                 </form>
             </div>
@@ -54,6 +51,6 @@
         Projeto Integrado 2025.1 - Grupo 5, UNIFEOB
     </footer>
 
-    <script src="./js/cadastro_usuario_script.js"></script>
+    <script src="./js/cadastro_cliente_script.js"></script>
 </body>
 </html>
