@@ -18,34 +18,20 @@
             <li><a href="#">CONTATO</a></li>
         </ul>
     </nav>
-    <main class="conteudo"><h1>Conta do Usuário</h1>
+    <main class="conteudo">
+  <h1>Conta do Usuário</h1>
 
-        <section>
-          <h2>Informações Pessoais</h2>
-          <p><strong>Nome:</strong> João da Silva</p>
-          <p><strong>Email:</strong> joao@email.com</p>
-          <p><strong>Data de nascimento:</strong> 01/01/2000</p>
-        </section>
-      
-        <section>
-          <h2>Endereço</h2>
-          <p><strong>Cidade:</strong> São Paulo</p>
-          <p><strong>Estado:</strong> SP</p>
-          <p><strong>CEP:</strong> 01000-000</p>
-        </section>
-      
-        <section>
-          <h2>Preferências</h2>
-          <p><strong>Idioma:</strong> Português</p>
-          <p><strong>Notificações por email:</strong> Ativadas</p>
-        </section>
-      
-        <section>
-          <h2>Ações</h2>
-          <button>Editar Perfil</button>
-          <button>Alterar Senha</button>
-          <button>Sair da Conta</button>
-        </section></main>
+  <section id="info-pessoal">
+    <h2>Informações Pessoais</h2>
+    <p><strong>Nome:</strong> <span id="nome">Carregando...</span></p>
+    <p><strong>Email:</strong> <span id="email">Carregando...</span></p>
+    <p><strong>Data de nascimento:</strong> <span id="data-nasc">Carregando...</span></p>
+  </section>
+
+  <section>
+    <h2>Ações</h2>
+    <button onclick="atualizarPerfil()">Atualizar Perfil</button>
+  </section></main>
     <footer class="rodape">
         Projeto Integrado 2025.1
         Grupo 5, UNIFEOB
