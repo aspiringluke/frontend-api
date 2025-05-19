@@ -4,7 +4,7 @@ async function carregarPedidos() {
   try {
     let token = localStorage.getItem('token');
 
-    const response = await fetch('http://localhost:4040/pedidos/detalhados', {
+    const response = await fetch('http://localhost:4040/pedidos', {
       headers: {
         'Content-Type': 'application/json',
         'authorization': 'bearer ' + token
