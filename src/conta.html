@@ -3,39 +3,36 @@
 <head>
   <meta charset="UTF-8">
   <title>Perfil do Usuário</title>
-<link rel="stylesheet" href="./css/index_style.css">
-
-<link rel="stylesheet" href="./css/conta_style.css">
+	<link rel="stylesheet" href="./css/index_style.css">
+	<link rel="stylesheet" href="./css/conta_style.css">
 </head>
 <body>
-    <header class="banner">
-        CONTA
-    </header> 
-    <nav class="menu">
-        <ul>
-            <li><a href="./index_ven.html">MENU VEN</a></li>
-            <li><a href="./index_adm.html">MENU ADM</a></li>
-            <li><a href="./ajuda.html">AJUDA</a></li>
-            <li><a href="#">CONTATO</a></li>
-        </ul>
-    </nav>
-    <main class="conteudo">
-  <h1>Conta do Usuário</h1>
+	<header class="banner">
+		CONTA
+	</header> 
+	<nav class="menu">
+		<ul>
+			<li><a href="./index_ven.html">MENU VEN</a></li>
+			<li><a href="./index_adm.html">MENU ADM</a></li>
+		</ul>
+	</nav>
+	<main class="conteudo">
+		<h1>Conta do Usuário</h1>
 
-  <section id="info-pessoal">
-    <h2>Informações Pessoais</h2>
-    <p><strong>Nome:</strong> <span id="nome">Carregando...</span></p>
-    <p><strong>Email:</strong> <span id="email">Carregando...</span></p>
-    <p><strong>Data de nascimento:</strong> <span id="data-nasc">Carregando...</span></p>
-  </section>
+		<section class="container">
+			<h2>Informações Pessoais</h2>
+			<p><strong>Nome:</strong> <span id="nome">Carregando...</span></p>
+			<p><strong>Email:</strong> <span id="email">Carregando...</span></p>
+			<h2>Ações</h2>
+			<button onclick="atualizarPerfil()">Atualizar Perfil</button>
+		</section>
+	</main>
 
-  <section>
-    <h2>Ações</h2>
-    <button onclick="atualizarPerfil()">Atualizar Perfil</button>
-  </section></main>
-    <footer class="rodape">
-        Projeto Integrado 2025.1
-        Grupo 5, UNIFEOB
-    </footer>
+	<footer class="rodape">
+		Projeto Integrado 2025.1
+		Grupo 5, UNIFEOB
+	</footer>
+
+	<script src="./js/conta_script.js"></script>
 </body>
 </html>
