@@ -4,6 +4,13 @@
     box-sizing: border-box;
 }
 
+body {
+    background-color: #f9f9f9; /* Cor de fundo clara */
+    background-image: url('https://www.transparenttextures.com/patterns/checkered-pattern.png');
+    background-repeat: repeat;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+}
 
 .tall_button{
     align-content: center;
@@ -30,8 +37,6 @@
     text-align: right;
     line-height: 50px;
     font-size: 50px;
-    /* A fonte do banner deve ser de título */
-    font-family:Verdana, sans-serif;
 }
 
 .logo-container {
@@ -57,7 +62,6 @@
     width: 100%;
     background-color: #e4db5d; /* Cor principal do menu */
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 /* Lista do menu */
@@ -129,31 +133,6 @@
     background-color: rgb(241, 113, 113);
 }
 
-
-/*
- * |==================|
- * |===== RODAPE =====|
- * |==================|
-*/
-
-.rodape {
-    padding: 20px;
-    margin-top: 20px;
-    text-align: center;
-    background-color: darkred;
-    color:rgb(255, 255, 255);
-}
-
-
-body {
-    background-color: #f9f9f9; /* Cor de fundo clara */
-    background-image: url('https://www.transparenttextures.com/patterns/checkered-pattern.png');
-    background-repeat: repeat;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    line-height: 1.6;
-}
-
-
 .cadastro-pedidos {
     max-width: 1200px;
     margin: 40px auto;
@@ -161,7 +140,6 @@ body {
     padding: 30px;
     border-radius: 12px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    font-family: Verdana, sans-serif;
 }
 
 .cadastro-pedidos h1 {
@@ -377,5 +355,23 @@ body {
     font-weight: bold;
     color: #444;
 }
+
+
+/*
+ * |==================|
+ * |===== RODAPE =====|
+ * |==================|
+*/
+
+.rodape {
+    padding: 20px;
+    margin-top: 20px;
+    text-align: center;
+    background-color: darkred;
+    color:rgb(255, 255, 255);
+}
+
+
+
 
   
