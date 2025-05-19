@@ -54,7 +54,3 @@ async function carregarPedidos() {
 }
 
 window.onload = carregarPedidos;
-
-
-
-
