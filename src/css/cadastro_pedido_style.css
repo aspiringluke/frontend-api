@@ -367,4 +367,15 @@ body {
 }
 
 
+#clienteSelecionado {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    background-color: #eaeaea;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 8px;
+    font-weight: bold;
+    color: #444;
+}
+
   

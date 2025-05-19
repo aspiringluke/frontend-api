@@ -133,8 +133,9 @@ function pesquisarClientes() {
 function selecionarCliente(idCliente, event) {
     clienteSelecionado = idCliente;
     const nome = event.target.parentNode.parentNode.querySelector('td').textContent;
-    alert(`Cliente selecionado: ${nome}`);
+    document.getElementById('clienteSelecionado').value = nome;
 }
+
 
 
 async function carregarClientes() {

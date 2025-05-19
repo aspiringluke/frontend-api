@@ -21,69 +21,61 @@
     </nav>
 
     <main class="cadastro-pedidos">
-        <div class="layout">
-            <div class="areaDeCadastro">
-                <h1>Cadastrar Pedido</h1>
-                <form onsubmit="event.preventDefault(); criarPedido();" class="formulario-pedido">
-                    <div class="containerTabela">
-                        <h2>Tabela de Clientes</h2>
-                        <input
-                            type="text"
-                            id="pesquisarCliente"
-                            onkeyup="pesquisarClientes()"
-                            placeholder="Pesquisar por nome..."
-                        />
-                        <div class="tabela-rolavel">
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th>Nome</th>
-                                        <th>CNPJ</th>
-                                        <th>CEP</th>
-                                        <th>Telefone</th>
-                                        <th>Adicionar Cliente</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="corpoTabelaClientes"></tbody>
-                            </table>
-                        </div>
-                    </div>
+    <div class="formulario-pedido">
+        <h1>Cadastrar Pedido</h1>
 
-                    <label for="dataPedido">Data</label>
-                    <input type="date" id="dataPedido" name="dataPedido" required />
-                    <button type="submit">Cadastrar pedido</button>
-                </form>
-            </div>
+        <label for="dataPedido">Data do Pedido</label>
+        <input type="date" id="dataPedido" name="dataPedido" required />
 
-            <div class="containerTabela">
-                <h2>Tabela de Produtos</h2>
-                <input
-                    type="text"
-                    id="pesquisarProduto"
-                    onkeyup="pesquisarProdutos()"
-                    placeholder="Pesquisar por nome..."
-                />
-                <div class="tabela-rolavel">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Nome</th>
-                                <th>Preço</th>
-                                <th>Adicionar Ao Carrinho</th>
-                            </tr>
-                        </thead>
-                        <tbody id="corpoTabelaProdutos"></tbody>
-                    </table>
-                </div>
-
-                <div class="carrinho-produtos">
-                    <h2>Carrinho de Produtos</h2>
-                    <ul id="listaCarrinho"></ul>
-                    <p>Total: <span id="totalCarrinho">R$ 0,00</span></p>
-                </div>
+        <div class="containerTabela">
+            <h2>Tabela de Clientes</h2>
+            <input type="text" id="pesquisarCliente" onkeyup="pesquisarClientes()" placeholder="Pesquisar por nome..." />
+            <div class="tabela-rolavel">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>CNPJ</th>
+                            <th>CEP</th>
+                            <th>Telefone</th>
+                            <th>Selecionar</th>
+                        </tr>
+                    </thead>
+                    <tbody id="corpoTabelaClientes"></tbody>
+                </table>
             </div>
         </div>
-    </main>
+
+        <label for="clienteSelecionado">Cliente Selecionado</label>
+        <input type="text" id="clienteSelecionado" readonly placeholder="Nenhum cliente selecionado" />
+
+        <div class="containerTabela">
+            <h2>Tabela de Produtos</h2>
+            <input type="text" id="pesquisarProduto" onkeyup="pesquisarProdutos()" placeholder="Pesquisar por nome..." />
+            <div class="tabela-rolavel">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Preço</th>
+                            <th>Adicionar</th>
+                        </tr>
+                    </thead>
+                    <tbody id="corpoTabelaProdutos"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="carrinho-produtos">
+            <h2>Carrinho de Produtos</h2>
+            <ul id="listaCarrinho"></ul>
+            <p>Total: <span id="totalCarrinho">R$ 0,00</span></p>
+        </div>
+
+        <button type="submit" onclick="criarPedido()">Cadastrar Pedido</button>
+    </div>
+</main>
+
     <footer class="rodape">
         Projeto Integrado 2025.1 - Grupo 5, UNIFEOB
     </footer>
