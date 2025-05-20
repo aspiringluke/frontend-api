@@ -1,41 +1,55 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projeto de API - Menu Inicial</title>
-    <link rel="stylesheet" href="css/index_style.css">
+    <link rel="stylesheet" href="css/login_style.css">
+    <title>Login</title>
 </head>
 <body>
-    <header class="banner">
-        <div class="logo-container">
-            <img src="https://www.argenzio.com.br/img/Logo_Argenzio.png" alt="Logo Argenzio">
-        </div>
-    </header>
+    <div id="logo-container">
+        <img src="https://www.argenzio.com.br/img/Logo_Argenzio.png" alt="Logo Argenzio" id="logo">
+    </div>
+    
+    <div id="box1">
+        <p id="p1">Logar </p>
+        <form class="login">
+            <label for="login">Email</label><br>
+            <input type="text" name="email" id="email"><br>
+            <label for="senha">Senha</label><br>
+            <input type="password" name="psw" id="psw"><br><br>
+            <input type="button" value="Entrar" onclick="fazerLogin()"> 
+        </form>
+    </div>
 
-    <nav class="menu">
-        <ul>
-            <li><a href="./conta.html">CONTA</a></li>
-        </ul>
-    </nav>
-
-    <main class="conteudo">
-        <section class="containerMenu">
-            <a href="./cadastro_pedido.html" class="menuButton">
-                <h1>Cadastrar<br>novo pedido</h1>
-            </a>
-            <a href="./cadastro_cliente.html" class="menuButton">
-               <h1>Cadastrar<br>cliente</h1>
-            </a>
-            <a href="./lista_pedidos.html" class="menuButton">
-                <h1>Ver pedidos<br>registrados</h1>
-            </a>
-        </section>
-    </main>
-
-
-    <footer class="rodape">
-        Projeto Integrado 2025.1 - Grupo 5, UNIFEOB
-    </footer>
+    <script src="./js/login_script.js"></script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
