@@ -28,6 +28,8 @@ async function carregarPedidos() {
 
         const statusColuna = document.createElement('td');
         statusColuna.textContent = pedido.status;
+        statusColuna.id = `status-${pedido.idPedido}`;
+        statusColuna.className = pedido.status === 'Concluído' ? 'concluido' : 'pendente';
 
         const dataColuna = document.createElement('td');
         dataColuna.textContent = new Date(pedido.data).toLocaleDateString('pt-BR');
@@ -35,11 +37,19 @@ async function carregarPedidos() {
         const valorColuna = document.createElement('td');
         valorColuna.textContent = `R$ ${parseFloat(pedido.valorTotal || 0).toFixed(2)}`;
 
+        const acaoColuna = document.createElement('td');
+        const botao = document.createElement('button');
+        botao.textContent = pedido.status === 'Pendente' ? 'Marcar como Concluído' : 'Marcar como Pendente';
+        botao.onclick = () => alterarStatus(pedido.idPedido, pedido.status);
+
+        acaoColuna.appendChild(botao);
+
         linha.appendChild(idColuna);
         linha.appendChild(nomeColuna);
         linha.appendChild(statusColuna);
         linha.appendChild(dataColuna);
         linha.appendChild(valorColuna);
+        linha.appendChild(acaoColuna);
 
         corpo.appendChild(linha);
       });
@@ -52,5 +62,36 @@ async function carregarPedidos() {
     document.getElementById('mensagemErro').textContent = 'Erro de rede: ' + erro.message;
   }
 }
+
+async function alterarStatus(idPedido, statusAtual) {
+  const statusNormalizado = statusAtual.toLowerCase();
+  const novoStatus = statusNormalizado === 'pendente' ? 'Concluído' : 'Pendente';
+  console.log(`Alterando status do pedido ${idPedido} de "${statusAtual}" para "${novoStatus}"`);
+  
+  const token = localStorage.getItem('token');
+
+  try {
+    const response = await fetch(`http://localhost:4040/pedidos/${idPedido}/status`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        'authorization': 'bearer ' + token
+      },
+      body: JSON.stringify({ status: novoStatus })
+    });
+
+    const result = await response.json();
+
+    if (result.success) {
+      carregarPedidos();
+    } else {
+      alert('Erro ao alterar status: ' + result.message);
+    }
+  } catch (erro) {
+    alert('Erro ao conectar com o servidor: ' + erro.message);
+  }
+}
+
+
 
 window.onload = carregarPedidos;

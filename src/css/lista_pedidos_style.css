@@ -36,3 +36,13 @@ tr:hover {
     color: red;
     margin-top: 10px;
 }
+
+.pendente {
+  color: rgb(0, 0, 0);
+  font-weight: bold;
+}
+
+.concluido {
+  color: rgb(31, 64, 126);
+  font-weight: bold;
+}
