@@ -1,6 +1,13 @@
 const apiUrl = "http://localhost:4040/users";
 const userId = localStorage.getItem('userId');
 
+if(userId === 1){
+    document.getElementById('admin').style.display="none";
+}else{
+    document.getElementById('vendedor').style.display="none";
+}
+document.getElementById('areaAtualizar').style.display="none";
+
 async function carregarPerfil() {
     const token = localStorage.getItem('token');
     fetch(apiUrl+"/"+userId, {
@@ -35,9 +42,8 @@ async function atualizarPerfil() {
     })
     .then(res => res.json())
     .then(data => {
-        console.log("Perfil atualizado:", data);
-        document.getElementById("nome").textContent = data.name;
-        document.getElementById("email").textContent = data.email;
+        console.log("Perfil atualizado.");
+        alert("Perfil atualizado com sucesso!");
     })
     .catch (error => {
         console.log("Erro ao atualizar o perfil:", error);
