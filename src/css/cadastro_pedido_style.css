@@ -325,8 +325,8 @@ body {
 }
 
 .carrinho-produtos li button {
-    background-color: #fcd600; /* Cor vermelha para o botão de remover */
-    color: white;
+    background-color: #fcd600; 
+    color: black;
     border: none;
     padding: 5px 10px;
     border-radius: 5px;

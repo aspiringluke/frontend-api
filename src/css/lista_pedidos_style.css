@@ -2,16 +2,14 @@ body {
     font-family: Arial, sans-serif;
 }
 
-header {
-    color: white;
-}
-
 table {
     position: relative;
     left: 50%;
     transform: translateX(-50%);
     margin: 20px;
     width: 90%;
+    border: 1px solid white;
+    border-radius: 9px;
     border-collapse: collapse;
     background-color: white;
     box-shadow: 0 2px 6px rgba(0,0,0,0.1);
@@ -19,7 +17,7 @@ table {
 
 th, td {
     padding: 12px 15px;
-    border-bottom: 1px solid #ddd;
+    border: 1px solid #e3e3e3;
     text-align: left;
 }
 
@@ -28,8 +26,12 @@ th {
     color: white;
 }
 
+tr{
+    transition: ease-in-out 0.1s;
+}
 tr:hover {
     background-color: #f1f1f1;
+    transform: scale(1.02);
 }
 
 .erro {
@@ -38,11 +40,26 @@ tr:hover {
 }
 
 .pendente {
-  color: rgb(0, 0, 0);
+  background-color: rgba(255, 0, 0, 0.35);
   font-weight: bold;
 }
 
 .concluido {
-  color: rgb(31, 64, 126);
+  background-color: rgba(0, 255, 68, 0.35);
   font-weight: bold;
+}
+
+.btnAlternarStatus {
+    background-color: #fcd60082; 
+    color: black;
+    border: 1px rgba(0, 0, 0, 0.228) solid;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9em;
+    transition: ease-in-out 0.1s;
+}
+
+.btnAlternarStatus:hover {
+    background-color: #fffb00;
 }
