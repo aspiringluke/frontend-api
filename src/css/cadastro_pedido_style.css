@@ -1,102 +1,3 @@
-* {
-    margin: 0px;
-    padding: 0px;
-    box-sizing: border-box;
-}
-
-body {
-    background-color: #f9f9f9; /* Cor de fundo clara */
-    background-image: url('https://www.transparenttextures.com/patterns/checkered-pattern.png');
-    background-repeat: repeat;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    line-height: 1.6;
-}
-
-.tall_button{
-    align-content: center;
-    border: 1px black solid;
-    text-align: center;
-    height: 100%;
-}
-
-/*
- * |==================|
- * |===== BANNER =====|
- * |==================|
-*/
-
-.banner {
-    text-align: center;
-
-
-    border: 2px solid black;
-    background-color: rgba(250, 50, 10, 1);    
-}
-
-#bannerTitle{
-    text-align: right;
-    line-height: 50px;
-    font-size: 50px;
-}
-
-.logo-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 130px; /* ocupa a altura toda da tela */
-}
-
-.logo-container img {
-    max-width: 80%;
-    height: 100%;
-}
-
-/*
- * |================|
- * |===== MENU =====|
- * |================|
-*/
-
-/* Menu de navegação principal */
-.menu {
-    width: 100%;
-    background-color: #e4db5d; /* Cor principal do menu */
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-
-/* Lista do menu */
-.menu ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center; /* Centraliza os itens */
-    flex-wrap: wrap; /* Quebra em telas pequenas */
-}
-
-/* Itens do menu */
-.menu ul li {
-    margin: 0 15px;
-}
-
-/* Links do menu */
-.menu ul li a {
-    display: block;
-    padding: 15px 20px;
-    color: rgb(231, 62, 62);
-    text-decoration: none;
-    font-weight: 500;
-    font-size: 16px;
-    transition: background-color 0.3s ease, color 0.3s ease;
-    border-radius: 6px;
-}
-
-/* Efeito hover */
-.menu ul li a:hover {
-    background-color: #a54e4e;
-    color: #f1f1f1;
-}
-
 /*
  * |====================|
  * |===== CONTEUDO =====|
@@ -104,39 +5,10 @@ body {
 */
 
 
-
-.tall_button {
-    width: 300px;
-    height: 500px; /* altura dos botões */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 2px solid black;
-    border-radius: 12px;
-}
-
-.tall_button button {
-    width: 200%;
-    height: 100%;
-    font-size: 24px;
-    border: none;
-    border-radius: 12px;
-    background-color: #FF033E;
-    color: rgb(255, 255, 255);
-    cursor: pointer;
-    padding: 20px;
-    transition: background-color 0.3s ease;
-    line-height: 1.4;
-}
-
-.tall_button button:hover {
-    background-color: rgb(241, 113, 113);
-}
-
 .cadastro-pedidos {
     max-width: 1200px;
     margin: 40px auto;
-    background-color: rgba(214, 214, 214, 0.9);
+    background-color: rgba(255, 255, 255, 0.9);
     padding: 30px;
     border-radius: 12px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
@@ -145,16 +17,28 @@ body {
 .cadastro-pedidos h1 {
     text-align: center;
     margin-bottom: 20px;
-    color: rgb(180, 7, 7);
+    color: #D32F2F;
 }
 
+.formulario-pedido #dataPedido {
+    width: 100%;
+    border: 1px solid #ccc;
+    margin-bottom: 12px;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 115%;
+    color: #ccc;
+}
+
+.formulario-pedido #dataPedido:hover {
+    cursor: text;
+}
 .formulario-pedido label {
     display: block;
     margin-top: 15px;
     font-weight: bold;
 }
 
-.formulario-pedido input,
 
 .formulario-pedido textarea {
     width: 100%;
@@ -167,22 +51,25 @@ body {
 
 .formulario-pedido button {
     display: block;
-    width: 100%;
     padding: 15px;
-    margin-top: 20px;
-    background-color: #D32F2F;
-    color: white;
+    background-color: #ffffff;
+    color: #D32F2F;
+    border: 1px solid #D32F2F;
     font-size: 18px;
-    border: none;
     border-radius: 8px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: 0.3s ease;
 }
 
 .formulario-pedido button:hover {
-    background-color: rgb(83, 19, 19);
+    background-color: #D32F2F;
+    color: white;
 }
 
+#btnCadastro {
+    width:100%;
+    margin-top: 5px;
+}
 
 .formulario-pedido select {
     width: 100%;
@@ -209,21 +96,19 @@ body {
     max-width: 90%;
     margin: 40px auto;
     padding: 0 20px;
-    flex-direction: column; /* Alinha os itens verticalmente */
+    flex-direction: column;
 }
 
-
 .containerTabela h2 {
-    margin-top: 0;
-    color: rgb(180, 7, 7);
+    color: #D32F2F;
     text-align: center;
     margin-bottom: 10px;
 }
 
-#pesquisar {
+#pesquisarCliente, #pesquisarProduto {
     width: 100%;
     padding: 10px;
-    margin-bottom: 10px;
+    margin-bottom: 6px;
     border: 1px solid #ccc;
     border-radius: 8px;
     box-sizing: border-box;
@@ -231,9 +116,9 @@ body {
 }
 
 .tabela-rolavel {
-    max-height: 300px; /* Defina a altura máxima desejada */
-    overflow-y: auto; /* Adiciona a barra de rolagem vertical quando necessário */
-    border: 1px solid #ddd; /* Adiciona uma borda ao redor da área rolável */
+    max-height: 300px;
+    overflow-y: auto;
+    border: 1px solid #ddd;
     border-radius: 8px;
     margin-bottom: 10px;
 }
@@ -253,7 +138,7 @@ body {
 .tabela-rolavel th {
     background-color: #f2f2f2;
     font-weight: bold;
-    position: sticky; /* Para fixar o cabeçalho durante a rolagem */
+    position: sticky;
     top: 0;
 }
 
@@ -272,8 +157,8 @@ body {
 .carrinho-produtos h2 {
     margin-top: 0;
     margin-bottom: 10px;
-    color: rgb(180, 7, 7);
-    text-align: left; /* Alinha o título do carrinho à esquerda */
+    color: #D32F2F;
+    text-align: center;
 }
 
 .carrinho-produtos ul {
@@ -305,27 +190,25 @@ body {
 }
 
 .carrinho-produtos h2 {
-    margin-top: 0;
     margin-bottom: 10px;
-    color: rgb(180, 7, 7);
+    color: #D32F2F;
     text-align: left;
 }
 
 .carrinho-produtos ul {
     list-style: none;
-    padding: 0;
 }
 
 .carrinho-produtos li {
     padding: 8px 0;
     border-bottom: 1px dotted #ccc;
-    display: flex; /* Para alinhar o texto e o botão na mesma linha */
-    justify-content: space-between; /* Espaço entre o texto e o botão */
-    align-items: center; /* Alinhar verticalmente */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .carrinho-produtos li button {
-    background-color: #fcd600; 
+    background-color:  #fac228; 
     color: black;
     border: none;
     padding: 5px 10px;
@@ -335,7 +218,7 @@ body {
 }
 
 .carrinho-produtos li button:hover {
-    background-color: #fffb00;
+    background-color:  #e09927;
 }
 
 .carrinho-produtos p {
@@ -355,23 +238,3 @@ body {
     font-weight: bold;
     color: #444;
 }
-
-
-/*
- * |==================|
- * |===== RODAPE =====|
- * |==================|
-*/
-
-.rodape {
-    padding: 20px;
-    margin-top: 20px;
-    text-align: center;
-    background-color: darkred;
-    color:rgb(255, 255, 255);
-}
-
-
-
-
-  

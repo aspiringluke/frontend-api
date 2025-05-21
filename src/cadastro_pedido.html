@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Cadastrar Pedido</title>
     <link rel="icon" type="image/x-icon" href="https://www.argenzio.com.br/img/favicon.ico">
+    <link rel="stylesheet" href="./css/index_style.css">
     <link rel="stylesheet" href="css/cadastro_pedido_style.css" />
 </head>
 <body>
@@ -26,7 +27,13 @@
         <h1>Cadastrar Pedido</h1>
 
         <label for="dataPedido">Data do Pedido</label>
-        <input type="date" id="dataPedido" name="dataPedido" required />
+        <input
+            type="date"
+            id="dataPedido"
+            name="dataPedido"
+            onchange="this.style.color='black';"
+            required
+        />
 
         <div class="containerTabela">
             <h2>Tabela de Clientes</h2>
@@ -72,8 +79,8 @@
             <ul id="listaCarrinho"></ul>
             <p>Total: <span id="totalCarrinho">R$ 0,00</span></p>
         </div>
-
-        <button type="submit" onclick="criarPedido()">Cadastrar Pedido</button>
+        
+        <button type="submit" onclick="criarPedido()" id="btnCadastro">Cadastrar Pedido</button>
     </div>
 </main>
 

@@ -1,5 +1,5 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 table {
@@ -18,7 +18,7 @@ table {
 th, td {
     padding: 12px 15px;
     border: 1px solid #e3e3e3;
-    text-align: left;
+    text-align: center;
 }
 
 th {
@@ -31,7 +31,7 @@ tr{
 }
 tr:hover {
     background-color: #f1f1f1;
-    transform: scale(1.02);
+    transform: scale(1.0015);
 }
 
 .erro {
@@ -40,7 +40,7 @@ tr:hover {
 }
 
 .pendente {
-  background-color: rgba(255, 0, 0, 0.35);
+  background-color:rgba(211, 47, 47, 0.321);
   font-weight: bold;
 }
 
@@ -50,16 +50,17 @@ tr:hover {
 }
 
 .btnAlternarStatus {
-    background-color: #fcd60082; 
+    background-color:  #fac228; 
     color: black;
     border: 1px rgba(0, 0, 0, 0.228) solid;
     padding: 5px 10px;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 0.9em;
-    transition: ease-in-out 0.1s;
+    font-size: 1em;
+    transition: ease 0.2s;
 }
 
 .btnAlternarStatus:hover {
-    background-color: #fffb00;
+    background-color:  #e09927;
+    color: #ffffff;
 }
