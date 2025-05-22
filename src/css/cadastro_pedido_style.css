@@ -238,3 +238,84 @@
     font-weight: bold;
     color: #444;
 }
+
+
+@media (max-width: 900px) {
+    .cadastro-pedidos {
+        padding: 20px;
+        margin: 20px auto;
+    }
+
+    .layout {
+        flex-direction: column;
+        gap: 15px;
+        max-width: 95%;
+        padding: 0 10px;
+    }
+
+    .tabela-rolavel {
+        max-height: 250px;
+    }
+
+    .formulario-pedido button {
+        font-size: 16px;
+        padding: 12px;
+    }
+
+    .formulario-pedido textarea,
+    .formulario-pedido select,
+    .formulario-pedido #dataPedido {
+        font-size: 14px;
+    }
+
+    .carrinho-produtos {
+        padding: 10px;
+    }
+    
+    .carrinho-produtos li button {
+        padding: 4px 8px;
+        font-size: 0.8em;
+    }
+}
+
+@media (max-width: 600px) {
+    .cadastro-pedidos {
+        padding: 15px;
+    }
+
+    .formulario-pedido button {
+        width: 100%;
+    }
+
+    .carrinho-produtos li {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+
+    .tabela-rolavel th, 
+    .tabela-rolavel td {
+        font-size: 12px;
+        padding: 6px;
+    }
+
+    #pesquisarCliente, #pesquisarProduto {
+        font-size: 14px;
+        padding: 8px;
+    }
+}
+
+@media (max-width: 400px) {
+    .cadastro-pedidos h1 {
+        font-size: 1.4rem;
+    }
+
+    .formulario-pedido button {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    .carrinho-produtos h2 {
+        font-size: 1.2rem;
+    }
+}
