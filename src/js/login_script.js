@@ -20,7 +20,7 @@ function fazerLogin() {
             localStorage.setItem('1', './index_adm.html');
             localStorage.setItem('2', './index_ven.html');
             
-            window.location.href = localStorage.getItem(funcaoId);
+            window.location.href = localStorage.getItem(data.funcaoId);
         } else {
             alert(data.message || 'Erro ao fazer login.');
         }
