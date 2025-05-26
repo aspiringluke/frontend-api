@@ -15,8 +15,7 @@
 	</header> 
 	<nav class="menu">
 		<ul>
-			<li><a id="vendedor" href="./index_ven.html">HOME</a></li>
-			<li><a id="admin" href="./index_adm.html">HOME</a></li>
+			<li><a id="btnHome">HOME</a></li>
 		</ul>
 	</nav>
 	<main class="conteudo">
@@ -26,7 +25,23 @@
 			<p><strong>Nome:</strong> <span id="nome">Carregando...</span></p>
 			<p><strong>Email:</strong> <span id="email">Carregando...</span></p>
 			<h2>Ações</h2>
-			<button onclick="atualizarPerfil()">Atualizar Perfil</button>
+			<button onclick="document.getElementById('areaAtualizar').style.display=''">Atualizar Perfil</button>
+		</section>
+
+		<section class="container" id="areaAtualizar">
+			<form id="formAtualizar" onsubmit="atualizarPerfil();">
+				<label for="nome">
+					Nome:
+					<input type="text" id="nome" placeholder="Digite seu nome...">
+				</label>
+				<br>
+				<label for="email">
+					Email:
+					<input type="email" id="email" placeholder="exemplo@email.com">
+				</label>
+				<br>
+				<button type="submit">Enviar</button>
+			</form>
 		</section>
 	</main>
 

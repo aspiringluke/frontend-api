@@ -1,8 +1,10 @@
 "use strict";
 
+const funcaoId = localStorage.getItem('funcaoId');
+document.getElementById('btnHome').setAttribute('href', localStorage.getItem(funcaoId));
+
 let carrinho = [];
 let clienteSelecionado = null;
-
 
 function adicionarAoCarrinho(idProduto, nome, preco) {
     const itemNoCarrinho = carrinho.find((item) => item.idProduto === idProduto);

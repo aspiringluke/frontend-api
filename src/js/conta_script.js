@@ -1,11 +1,10 @@
+"use strict";
+
 const apiUrl = "http://localhost:4040/users";
 const userId = localStorage.getItem('userId');
+const funcaoId = localStorage.getItem('funcaoId');
 
-if(userId === 1){
-    document.getElementById('admin').style.display="none";
-}else{
-    document.getElementById('vendedor').style.display="none";
-}
+document.getElementById('btnHome').setAttribute('href', localStorage.getItem(funcaoId));
 document.getElementById('areaAtualizar').style.display="none";
 
 async function carregarPerfil() {
@@ -28,6 +27,8 @@ async function carregarPerfil() {
 }
 
 async function atualizarPerfil() {
+    const nome = document.getElementById('nome').value;
+    const email = document.getElementById('email').value;
     const token = localStorage.getItem('token');
     await fetch(apiUrl+"/"+userId, {
         method: "PUT",
@@ -36,9 +37,9 @@ async function atualizarPerfil() {
             "Authorization": "bearer "+token
         },
         body: JSON.stringify({
-            name: "Novo Nome",
-            email: "novoemail@email.com"
-        })
+            nome: nome,
+            email: email
+        }),
     })
     .then(res => res.json())
     .then(data => {

@@ -1,5 +1,8 @@
 "use strict";
+
 const URL = 'http://127.0.0.1:4040';
+const funcaoId = localStorage.getItem('funcaoId');
+document.getElementById('btnHome').setAttribute('href', localStorage.getItem(funcaoId));
 
 document.getElementById('cadastroUsuario').addEventListener('submit', (e)=>{
     e.preventDefault();

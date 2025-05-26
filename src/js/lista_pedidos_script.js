@@ -1,5 +1,8 @@
 "use strict";
 
+const funcaoId = localStorage.getItem('funcaoId');
+document.getElementById('btnHome').setAttribute('href', localStorage.getItem(funcaoId));
+
 async function carregarPedidos() {
   try {
     let token = localStorage.getItem('token');

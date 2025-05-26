@@ -1,5 +1,8 @@
 "use strict";
 
+const funcaoId = localStorage.getItem('funcaoId');
+document.getElementById('btnHome').setAttribute('href', localStorage.getItem(funcaoId));
+
 document.getElementById('cadastroCliente').addEventListener('submit', (e)=>{
     e.preventDefault();
     document.getElementById('submitBtn').setAttribute('disabled', 'disabled');

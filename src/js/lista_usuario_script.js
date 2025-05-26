@@ -1,3 +1,8 @@
+"use strict";
+
+const funcaoId = localStorage.getItem('funcaoId');
+document.getElementById('btnHome').setAttribute('href', localStorage.getItem(funcaoId));
+
 async function carregarUsuarios() {
   const token = localStorage.getItem('token');
   const corpo = document.getElementById('corpoTabelaUsuarios');
@@ -87,5 +92,3 @@ async function deletarUsuario(idUsuario) {
 }
 
 window.onload = carregarUsuarios;
-
-
