@@ -37,6 +37,8 @@ document.getElementById('cadastroUsuario').addEventListener('submit', (e)=>{
     .then(res => res.json())
     .then(data => {
         alert(JSON.stringify(data.message));
+
+        window.location.href = './lista_usuario.html';
     })
     .catch(error => console.log(error));
 });
