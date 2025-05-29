@@ -1,6 +1,6 @@
 "use strict";
 
-const apiUrl = "http://localhost:4040/users";
+const url = localStorage.getItem('url');
 const userId = localStorage.getItem('userId');
 const funcaoId = localStorage.getItem('funcaoId');
 
@@ -9,7 +9,7 @@ document.getElementById('areaAtualizar').style.display="none";
 
 async function carregarPerfil() {
     const token = localStorage.getItem('token');
-    fetch(apiUrl+"/"+userId, {
+    fetch(url+"/"+userId, {
         headers: {
             "Content-Type": "application/json",
             "Authorization": "bearer "+token
@@ -30,7 +30,7 @@ async function atualizarPerfil() {
     const nome = document.getElementById('nome').value;
     const email = document.getElementById('email').value;
     const token = localStorage.getItem('token');
-    await fetch(apiUrl+"/"+userId, {
+    await fetch(url+"/"+userId, {
         method: "PUT",
         headers: {
             "Content-Type": "application/json",

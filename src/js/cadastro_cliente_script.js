@@ -1,5 +1,6 @@
 "use strict";
 
+const url = localStorage.getItem('url');
 const funcaoId = localStorage.getItem('funcaoId');
 document.getElementById('btnHome').setAttribute('href', localStorage.getItem(funcaoId));
 
@@ -13,7 +14,6 @@ document.getElementById('cadastroCliente').addEventListener('submit', (e)=>{
     const cnpj = document.getElementById('cnpj').value;
     const telefone = document.getElementById('telefone').value;
 
-    const url = "http://localhost:4040";
     fetch(url+"/clientes", {
         method: "POST",
         headers: {

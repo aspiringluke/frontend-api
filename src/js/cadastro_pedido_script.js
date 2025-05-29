@@ -1,5 +1,6 @@
 "use strict";
 
+const url = localStorage.getItem('url');
 const funcaoId = localStorage.getItem('funcaoId');
 document.getElementById('btnHome').setAttribute('href', localStorage.getItem(funcaoId));
 
@@ -74,7 +75,7 @@ function pesquisarProdutos() {
 async function carregarProdutos() {
     try {
         let token = localStorage.getItem("token");
-        const response = await fetch("http://localhost:4040/produtos", {
+        const response = await fetch(url+"/produtos", {
             headers: { authorization: "bearer " + token },
         });
         const data = await response.json();
@@ -143,7 +144,7 @@ function selecionarCliente(idCliente, event) {
 async function carregarClientes() {
     try {
         let token = localStorage.getItem("token");
-        const response = await fetch("http://localhost:4040/clientes", {
+        const response = await fetch(url+"/clientes", {
             headers: { authorization: "bearer " + token },
         });
         const data = await response.json();
@@ -220,7 +221,7 @@ async function criarPedido() {
         })),
     };
 
-    await fetch("http://localhost:4040/pedidos", {
+    await fetch(url+"/pedidos", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",

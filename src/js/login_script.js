@@ -3,8 +3,10 @@
 function fazerLogin() {
     const email = document.getElementById('email').value;
     const senha = document.getElementById('psw').value;
-    localStorage.setItem('url', 'http://3.148.112.54:4040')
-    fetch(localStorage.getItem('url')+'/login', {
+    const url = 'http://3.148.112.54:4040';
+    localStorage.setItem('url', url);
+
+    fetch(url+'/login', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'

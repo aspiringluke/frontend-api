@@ -1,5 +1,6 @@
 "use strict";
 
+const url = localStorage.getItem('url');
 const funcaoId = localStorage.getItem('funcaoId');
 document.getElementById('btnHome').setAttribute('href', localStorage.getItem(funcaoId));
 
@@ -7,7 +8,7 @@ async function carregarPedidos() {
   try {
     let token = localStorage.getItem('token');
 
-    const response = await fetch('http://localhost:4040/pedidos/detalhados', {
+    const response = await fetch(url+'/pedidos/detalhados', {
 		headers: {
 			'Content-Type': 'application/json',
 			'authorization': 'bearer ' + token
@@ -75,7 +76,7 @@ async function alterarStatus(idPedido, statusAtual) {
 	const token = localStorage.getItem('token');
 
 	try {
-		const response = await fetch(`http://localhost:4040/pedidos/${idPedido}/status`, {
+		const response = await fetch(url+`/pedidos/${idPedido}/status`, {
 			method: 'PUT',
 			headers: {
 				'Content-Type': 'application/json',

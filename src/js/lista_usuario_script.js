@@ -1,5 +1,6 @@
 "use strict";
 
+const url = localStorage.getItem('url');
 const funcaoId = localStorage.getItem('funcaoId');
 document.getElementById('btnHome').setAttribute('href', localStorage.getItem(funcaoId));
 
@@ -9,7 +10,7 @@ async function carregarUsuarios() {
   const erro = document.getElementById('mensagemErro');
 
   try {
-    const res = await fetch('http://localhost:4040/users', {
+    const res = await fetch(url+'/users', {
       headers: {
         'Content-Type': 'application/json',
         'authorization': 'bearer ' + token
@@ -72,7 +73,7 @@ async function deletarUsuario(idUsuario) {
   const erro = document.getElementById('mensagemErro');
 
   try {
-    const res = await fetch(`http://localhost:4040/users/${idUsuario}`, {
+    const res = await fetch(url+`/users/${idUsuario}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',

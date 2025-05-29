@@ -1,12 +1,13 @@
 "use strict";
 
+const url = localStorage.getItem('url');
 const funcaoId = localStorage.getItem('funcaoId');
 document.getElementById('btnHome').setAttribute('href', localStorage.getItem(funcaoId));
 
 async function carregarProdutos() {
     let token = localStorage.getItem('token');
 
-    await fetch('http://localhost:4040/produtos', {
+    await fetch(url+'/produtos', {
       headers: {
         'Content-Type': 'application/json',
         'authorization': 'bearer ' + token
