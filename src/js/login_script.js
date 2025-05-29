@@ -3,8 +3,8 @@
 function fazerLogin() {
     const email = document.getElementById('email').value;
     const senha = document.getElementById('psw').value;
-    
-    fetch('http://localhost:4040/login', {
+    localStorage.setItem('url', 'http://3.148.112.54:4040')
+    fetch(localStorage.getItem('url')+'/login', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -21,6 +21,7 @@ function fazerLogin() {
             localStorage.setItem('2', './index_ven.html');
             
             window.location.href = localStorage.getItem(data.funcaoId);
+
         } else {
             alert(data.message || 'Erro ao fazer login.');
         }
