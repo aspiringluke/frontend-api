@@ -17,6 +17,7 @@
     <nav class="menu">
         <ul>
             <li><a href="./conta.html">CONTA</a></li>
+            <li><a id="linkDocs">DOCS API</a></li>
         </ul>
     </nav>
 
@@ -37,5 +38,12 @@
     <footer class="rodape">
         Projeto Integrado 2025.1 - Grupo 5, UNIFEOB
     </footer>
+
+    <script>
+        "use strict";
+        
+        const url = localStorage.getItem('url');
+        document.getElementById('linkDocs').setAttribute('href', url+'/api-docs');
+    </script>
 </body>
 </html>
