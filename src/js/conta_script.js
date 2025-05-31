@@ -9,7 +9,7 @@ document.getElementById('areaAtualizar').style.display="none";
 
 async function carregarPerfil() {
     const token = localStorage.getItem('token');
-    fetch(url+"/"+userId, {
+    fetch(url+"/users/"+userId, {
         headers: {
             "Content-Type": "application/json",
             "Authorization": "bearer "+token
@@ -30,7 +30,7 @@ async function atualizarPerfil() {
     const nome = document.getElementById('nome').value;
     const email = document.getElementById('email').value;
     const token = localStorage.getItem('token');
-    await fetch(url+"/"+userId, {
+    await fetch(url+"/users/"+userId, {
         method: "PUT",
         headers: {
             "Content-Type": "application/json",
