@@ -245,7 +245,6 @@ html, body{
     background-color: rgb(252, 65, 65);    
 }
 
-/* Responsividade */
 @media (max-width: 900px) {
     .banner {
         font-size: 40px;
@@ -257,7 +256,7 @@ html, body{
     }
 }
 
-@media (max-width: 500px) {
+@media (max-width: 900px) {
     .banner {
         font-size: 28px;
         padding: 10px;
@@ -268,7 +267,7 @@ html, body{
     }
 }
 
-@media (max-width: 200px) {
+@media (max-width: 500px) {
     .banner {
         font-size: 20px;
     }
