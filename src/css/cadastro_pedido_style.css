@@ -240,7 +240,7 @@
 }
 
 
-@media (max-width: 900px) {
+@media (max-width: 500px) {
     .cadastro-pedidos {
         padding: 20px;
         margin: 20px auto;
@@ -278,7 +278,7 @@
     }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 500px) {
     .cadastro-pedidos {
         padding: 15px;
     }
@@ -305,7 +305,7 @@
     }
 }
 
-@media (max-width: 400px) {
+@media (max-width: 300px) {
     .cadastro-pedidos h1 {
         font-size: 1.4rem;
     }
