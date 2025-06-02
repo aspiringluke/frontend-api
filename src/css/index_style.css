@@ -1,51 +1,70 @@
 * {
-    margin: 0;
-    padding: 0;
+    margin: 0px;
+    padding: 0px;
     box-sizing: border-box;
 }
 
-body {
+body{
     background-image: url('https://www.transparenttextures.com/patterns/checkered-pattern.png');
     background-repeat: repeat;
-    background-size: auto;
+    background-size: auto; /* ou 100px 100px para ajustar o tamanho do padrão */
     background-position: top left;
     background-color: #f2f2f2;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
-
-html, body {
+html, body{
     height: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
-/* ================== BANNER ================== */
+
+
+/*
+ * |==================|
+ * |===== BANNER =====|
+ * |==================|
+*/
+
 .banner {
-    width: 100%;
     text-align: center;
     padding: 20px;
     font-size: 60px;
+
     border: 2px solid black;
-    background-color: rgb(252, 65, 65);
-    box-sizing: border-box;
+    background-color: rgb(252, 65, 65);    
 }
 
-/* ================== MENU ================== */
+/*
+ * |================|
+ * |===== MENU =====|
+ * |================|
+*/
+
+/* Menu de navegação principal */
 .menu {
     width: 100%;
-    background-color: #fac228;
+    background-color: #fac228; /* Cor principal do menu */
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+/* Lista do menu */
 .menu ul {
     list-style: none;
+    margin: 0;
+    padding: 0;
     display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
+    justify-content: center; /* Centraliza os itens */
+    flex-wrap: wrap; /* Quebra em telas pequenas */
 }
 
+/* Itens do menu */
 .menu ul li {
     margin: 0 15px;
 }
 
+/* Links do menu */
 .menu ul li a {
     display: block;
     padding: 15px 20px;
@@ -58,8 +77,9 @@ html, body {
     margin: 6px;
 }
 
+/* Efeito hover */
 .menu ul li a:hover {
-    background-color: #e09927;
+    background-color:  #e09927;
     color: #f1f1f1;
 }
 
@@ -67,16 +87,22 @@ html, body {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 20px 0;
+    height: 130px; /* ocupa a altura toda da tela */
 }
 
 .logo-container img {
-    max-width: 200px;
-    height: auto;
+    max-width: 80%;
+    height: 100%;
 }
 
-/* ================== CONTEÚDO ================== */
-.conteudo {
+
+/*
+ * |====================|
+ * |===== CONTEUDO =====|
+ * |====================|
+*/
+
+.conteudo{
     flex: 1;
     display: flex;
     flex-direction: column;
@@ -97,7 +123,7 @@ html, body {
     align-items: center;
     width: 550px;
     height: 325px;
-    padding: 30px;
+    padding: 30px 30px;
     border: 2px solid #D32F2F;
     border-radius: 12px;
     transition: all 0.3s ease;
@@ -107,7 +133,7 @@ html, body {
     text-decoration: none;
     text-align: center;
     font-size: 28px;
-    font-weight: 100;
+    font-weight:100;
 }
 
 .menuButton:hover {
@@ -116,11 +142,10 @@ html, body {
     transform: scale(1.03);
 }
 
-#titulo {
+#titulo{
     text-align: center;
     margin-top: 70px;
 }
-
 .img-centralizada {
     display: block;
     margin: 0 auto 40px auto;
@@ -128,16 +153,21 @@ html, body {
     height: auto;
 }
 
-/* ================== RODAPÉ ================== */
+
+/*
+ * |==================|
+ * |===== RODAPE =====|
+ * |==================|
+*/
+
 .rodape {
     padding: 20px;
     margin-top: 20px;
     text-align: center;
     background-color: rgb(252, 65, 65);
-    color: white;
+    color:white;
 }
 
-/* ========== RESPONSIVIDADE ========== */
 @media (max-width: 900px) {
     .menu ul {
         flex-direction: column;
@@ -155,14 +185,14 @@ html, body {
         gap: 20px;
         padding: 20px;
     }
-
+    
     .banner {
-        font-size: 40px;
+        font-size: 2.5rem;
         padding: 15px;
     }
 
-    .logo-container img {
-        max-width: 150px;
+    .logo-container {
+        height: 100px;
     }
 }
 
@@ -181,15 +211,6 @@ html, body {
     .img-centralizada {
         max-width: 100px;
     }
-
-    .banner {
-        font-size: 28px;
-        padding: 10px;
-    }
-
-    .logo-container img {
-        max-width: 120px;
-    }
 }
 
 @media (max-width: 400px) {
@@ -199,12 +220,59 @@ html, body {
     }
 
     .banner {
+        font-size: 1.8rem;
+    }
+}
+
+.logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+}
+
+.logo-container img {
+    max-width: 200px;
+    height: auto;
+}
+
+/* Banner - cabeçalho */
+.banner {
+    text-align: center;
+    padding: 20px;
+    font-size: 60px;
+    border: 2px solid black;
+    background-color: rgb(252, 65, 65);    
+}
+
+@media (max-width: 900px) {
+    .banner {
+        font-size: 40px;
+        padding: 15px;
+    }
+    
+    .logo-container img {
+        max-width: 150px;
+    }
+}
+
+@media (max-width: 900px) {
+    .banner {
+        font-size: 28px;
+        padding: 10px;
+    }
+    
+    .logo-container img {
+        max-width: 120px;
+    }
+}
+
+@media (max-width: 500px) {
+    .banner {
         font-size: 20px;
     }
-
+    
     .logo-container img {
         max-width: 100px;
     }
 }
-
-
