@@ -19,6 +19,7 @@ body {
     background-position: top left;
     background-color: #f2f2f2;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    flex: 1;
 }
 
 /* ================== BANNER ================== */
@@ -30,6 +31,7 @@ body {
     border: 2px solid black;
     background-color: rgb(252, 65, 65);
     box-sizing: border-box;
+    flex-shrink: 0;
 }
 
 /* ================== MENU ================== */
@@ -37,6 +39,7 @@ body {
     width: 100%;
     background-color: #fac228;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    flex-shrink: 0;
 }
 
 .menu ul {
@@ -84,6 +87,7 @@ body {
     flex: 1;
     display: flex;
     flex-direction: column;
+    justify-content: center;
 }
 
 .containerMenu {
@@ -138,6 +142,7 @@ body {
     text-align: center;
     background-color: rgb(252, 65, 65);
     color: white;
+    flex-shrink: 0;
 }
 
 /* ========== RESPONSIVIDADE ========== */
@@ -209,5 +214,6 @@ body {
         max-width: 100px;
     }
 }
+
 
 
