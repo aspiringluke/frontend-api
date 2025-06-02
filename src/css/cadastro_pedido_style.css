@@ -240,24 +240,20 @@
 }
 
 
-@media (max-width: 500px) {
+@media (max-width: 768px) {
+    .layout {
+        flex-direction: column;
+        gap: 15px;
+        padding: 0 10px;
+    }
+
     .cadastro-pedidos {
         padding: 20px;
         margin: 20px auto;
     }
 
-    .layout {
-        flex-direction: column;
-        gap: 15px;
-        max-width: 95%;
-        padding: 0 10px;
-    }
-
-    .tabela-rolavel {
-        max-height: 250px;
-    }
-
     .formulario-pedido button {
+        width: 100%;
         font-size: 16px;
         padding: 12px;
     }
@@ -268,23 +264,25 @@
         font-size: 14px;
     }
 
+    .tabela-rolavel {
+        max-height: 250px;
+        overflow-x: auto;
+    }
+
+    .tabela-rolavel th,
+    .tabela-rolavel td {
+        font-size: 13px;
+        padding: 6px;
+        white-space: nowrap;
+    }
+
+    #pesquisarCliente, #pesquisarProduto {
+        font-size: 14px;
+        padding: 8px;
+    }
+
     .carrinho-produtos {
         padding: 10px;
-    }
-    
-    .carrinho-produtos li button {
-        padding: 4px 8px;
-        font-size: 0.8em;
-    }
-}
-
-@media (max-width: 500px) {
-    .cadastro-pedidos {
-        padding: 15px;
-    }
-
-    .formulario-pedido button {
-        width: 100%;
     }
 
     .carrinho-produtos li {
@@ -293,29 +291,23 @@
         gap: 5px;
     }
 
-    .tabela-rolavel th, 
-    .tabela-rolavel td {
-        font-size: 12px;
-        padding: 6px;
-    }
-
-    #pesquisarCliente, #pesquisarProduto {
-        font-size: 14px;
-        padding: 8px;
+    .carrinho-produtos li button {
+        padding: 4px 8px;
+        font-size: 0.8em;
     }
 }
 
-@media (max-width: 300px) {
+@media (max-width: 400px) {
     .cadastro-pedidos h1 {
         font-size: 1.4rem;
+    }
+
+    .carrinho-produtos h2 {
+        font-size: 1.2rem;
     }
 
     .formulario-pedido button {
         font-size: 14px;
         padding: 10px;
-    }
-
-    .carrinho-produtos h2 {
-        font-size: 1.2rem;
     }
 }
