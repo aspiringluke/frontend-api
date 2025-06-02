@@ -64,6 +64,11 @@ html, body {
     color: #f1f1f1;
 }
 
+
+.rodape {
+    flex-shrink: 0;
+}
+
 .logo-container {
     display: flex;
     justify-content: center;
